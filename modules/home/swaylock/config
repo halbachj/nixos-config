@@ -1,0 +1,16 @@
+#image=/home/twostone/.config/variety/wallpaper/wallpaper-clock-*.jpg
+
+fade-in=0.2
+
+clock
+timestr=%R
+datestr=%a, %e of %B
+
+effect-blur=20x2
+#effect-greyscale
+effect-scale=0.3
+
+indicator
+indicator-radius=140
+indicator-thickness=8
+indicator-caps-lock

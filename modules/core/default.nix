@@ -1,0 +1,22 @@
+{
+  inputs,
+  nixpkgs,
+  self,
+  userSettings,
+  systemSettings,
+  host,
+  ...
+}:
+{
+  imports = [
+    ./bootloader.nix
+    ./network.nix
+    ./nh.nix
+    ./programs.nix
+    ./system.nix
+    ./wayland.nix
+    ./security.nix
+    ./user.nix
+    ./services.nix
+  ];
+}
