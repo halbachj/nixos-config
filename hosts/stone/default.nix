@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -10,4 +10,8 @@
   #hardware.pulseaudio.enable = true;
   hardware.bluetooth.enable = true;
 
+  # Enable OpenGL
+  hardware.graphics = {
+    enable = true;
+  };
 }
