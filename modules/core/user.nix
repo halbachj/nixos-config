@@ -19,6 +19,7 @@
       home.homeDirectory = "/home/${userSettings.username}";
       home.stateVersion = "${systemSettings.stateVersion}";
       programs.home-manager.enable = true;
+      accounts.email.accounts = userSettings.emailAccounts;
     };
   };
 

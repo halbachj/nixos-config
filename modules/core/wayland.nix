@@ -4,6 +4,7 @@
     grim # screenshot functionality
     slurp # screenshot functionality
     wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
+    wl-clipboard-x11
     mako # notification system developed by swaywm maintainer
   ];
 
@@ -14,6 +15,7 @@
     wrapperFeatures.gtk = true;
     xwayland.enable = true;
   };
+
 
   xdg.portal = {
     enable = true;
@@ -33,6 +35,13 @@
     ];
   };
 
-
-  
+  services.greetd = {                                                      
+    enable = true;                                                         
+    settings = {                                                           
+      default_session = {                                                  
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd sway";
+        user = "greeter";                                                  
+      };                                                                   
+    };                                                                     
+  };
 }

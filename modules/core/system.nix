@@ -23,7 +23,7 @@
   environment.systemPackages = with pkgs; [
     wget
     git
-    uutils-coreutils
+    uutils-coreutils-noprefix
     ripgrep
   ];
 

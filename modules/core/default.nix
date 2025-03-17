@@ -18,5 +18,13 @@
     ./security.nix
     ./user.nix
     ./services.nix
+    ./steam.nix
+    ./bat.nix
+    ./python.nix
+    ./platformio.nix
+    ./esptool.nix
+    ./netcat.nix
+    ./nmap.nix
+    ./zip.nix
   ];
 }

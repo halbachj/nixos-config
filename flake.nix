@@ -4,7 +4,6 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nur.url = "github:nix-community/NUR";
-
 		
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -31,7 +30,7 @@
     let
       # ---- SYSTEM SETTINGS ---- #
       systemSettings = {
-        timezone = "Europe/Berlin"; # select timezone
+        timezone = "Europe/Dublin"; # select timezone
         locale = "en_US.UTF-8"; # select locale
         keymap = "de"; # console key map
         stateVersion = "24.11";
@@ -48,6 +47,20 @@
         username = "twostone"; # username
         name = "Johannes"; # name/identifier
         email = "johannes@halbachnet.de"; # email (used for certain configurations)
+	emailAccounts = {
+	  halbachnet = {                      
+	    primary = true;
+      	    userName = "johannes@halbachnet.de";
+            realName = "Johannes Halbach"; 
+            address = "johannes@halbachnet.de";
+            flavor = "plain";             
+            imap.host = "imap.1und1.com";      
+            imap.port = 993;              
+            smtp.host = "smtp.1und1.com";      
+            smtp.port = 465;              
+            thunderbird.enable = true;
+	  };
+        };                             
         hashedPassword = "$6$eO9zT8YVzpR.Z1Eg$nnBg9ryZgmcXYzc9gdgEdWDFvSNgTysLo2HO0NGafk0RGi8PpyigVwtiwBTG1Z/0Rm9lWPTeLzbixLrdhkwsA/";
       };
       lib = nixpkgs.lib;
