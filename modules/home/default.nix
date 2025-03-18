@@ -27,5 +27,7 @@
     ./bsdgames.nix
     ./ghidra.nix
     ./kicad.nix
+    ./inkscape.nix
+    ./viewnior.nix
   ];
 }
