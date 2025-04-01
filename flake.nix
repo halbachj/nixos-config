@@ -16,14 +16,16 @@
       url = "github:ghostty-org/ghostty";
     };
 
-
     spicetify-nix = {
       url = "github:gerg-l/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    anvim = {
+      url = "github:halbachj/anvim";
+      #\inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    nvf.url = "github:notashelf/nvf";
   };
 
   outputs = { nixpkgs, self, ... }@inputs:

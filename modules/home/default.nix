@@ -6,7 +6,7 @@
     ./browser.nix
     ./rofi.nix
     ./ghostty.nix
-    ./nvim.nix
+    ./anvim.nix
     ./variety.nix
     ./spicetify.nix
     ./git.nix
@@ -29,5 +29,7 @@
     ./kicad.nix
     ./inkscape.nix
     ./viewnior.nix
+    ./rawtherapee.nix
+    ./geogebra.nix
   ];
 }

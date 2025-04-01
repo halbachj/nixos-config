@@ -78,6 +78,7 @@ let
 	  "${modifier}+c" = "kill";
           "${modifier}+Return" = "exec ghostty";
           "${modifier}+Shift+s" = "exec grim -g \"$(slurp)\" - | xclip -i -selection clipboard -t image/png";
+          "${modifier}+Shift+p" = "exec grim -g \"$(slurp)\" ~/Pictures/Screenshots/$(date +'%Y-%m-%d_%H-%M-%S').png";
           "${modifier}+k+d" = "input * xkb_layout \"de\"";
           "${modifier}+k+u" = "input * xkb_layout \"us\"";
           "${modifier}+k+i" = "input * xkb_layout \"ie\"";
