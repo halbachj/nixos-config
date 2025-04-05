@@ -26,6 +26,5 @@
     ./netcat.nix
     ./nmap.nix
     ./zip.nix
-    ./anvim.nix
   ];
 }

@@ -31,5 +31,6 @@
     ./viewnior.nix
     ./rawtherapee.nix
     ./geogebra.nix
+    ./netlogo.nix
   ];
 }

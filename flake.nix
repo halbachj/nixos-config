@@ -23,7 +23,7 @@
 
     anvim = {
       url = "github:halbachj/anvim";
-      #\inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
   };
