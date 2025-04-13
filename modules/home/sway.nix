@@ -195,6 +195,7 @@ let
 	  { command = "wmname LG3D"; }
           # Idle
           #{ command = "$HOME/.config/sway/idle.sh"; }
+          { command = "export _JAVA_AWT_WM_NONREPARENTING=1"; }
         ];
         terminal = pkgs.alacritty;
         window.titlebar = false;

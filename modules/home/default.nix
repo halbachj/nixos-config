@@ -32,5 +32,6 @@
     ./rawtherapee.nix
     ./geogebra.nix
     ./netlogo.nix
+    ./vlc.nix
   ];
 }
