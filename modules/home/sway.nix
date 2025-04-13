@@ -44,8 +44,6 @@ let
 	    statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs /home/twostone/.config/i3status-rust/config-default.toml";
 	  }
 	];
-        #colors = {
-        #};
         fonts = {
           names = [ "Jetbrains Mono Nerd Font" ];
           style = "Regular Bold";
@@ -72,6 +70,18 @@ let
 	keycodebindings = {
 	  "--release 133" = "exec ${menu}"; 
 	};
+        workspaceOutputAssign = [
+          { workspace = "1"; output = "DP-1"; }
+          { workspace = "2"; output = "DP-1"; }
+          { workspace = "3"; output = "DP-1"; }
+          { workspace = "4"; output = "DP-1"; }
+          { workspace = "5"; output = "DVI-D-1"; }
+          { workspace = "6"; output = "DVI-D-1"; }
+          { workspace = "7"; output = "DVI-D-1"; }
+          { workspace = "8"; output = "HDMI-A-2"; }
+          { workspace = "9"; output = "HDMI-A-2"; }
+          { workspace = "10"; output = "HDMI-A-2"; }
+        ];
         keybindings = {
           "${modifier}+Shift+c" = "reload";
           # Kill focused window
@@ -205,14 +215,17 @@ let
 	    #bg = "${background} fit #1d2021";
 	  };
           # You can get the names of your outputs by running: swaymsg -t get_outputs
+          # Right monitor
   	  DVI-D-1 = {
             resolution = "1920x1080";
             position = "2970,0";
           };
+          # Middle monitor
           DP-1 = {
             resolution = "1920x1080";
             position = "1050,0";
           };
+          # Left monitor
           HDMI-A-2 = {
             resolution = "1680x1050";
             position = "0,0";
