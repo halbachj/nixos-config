@@ -8,11 +8,11 @@
         "nvf": "nvf"
       },
       "locked": {
-        "lastModified": 1744550367,
-        "narHash": "sha256-Qkvy6OFolp9/whkgQozMuWEoYuPzN9mR+8W5NkhoVJk=",
+        "lastModified": 1744550524,
+        "narHash": "sha256-/Y3PQnIZnkCMcNen6YlUqUpy837MLelZyEmcZ0QD+3I=",
         "owner": "halbachj",
         "repo": "anvim",
-        "rev": "eb2704b2418c1cd037e9ebd2e20e60111f6b8685",
+        "rev": "89ae399be14d9c94cade989fb0f4793b8435a73e",
         "type": "github"
       },
       "original": {
