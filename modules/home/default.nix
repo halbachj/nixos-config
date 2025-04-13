@@ -27,9 +27,9 @@
     ./bsdgames.nix
     ./ghidra.nix
     ./kicad.nix
-    ./inkscape.nix
+    #./inkscape.nix
     ./viewnior.nix
-    ./rawtherapee.nix
+    #./rawtherapee.nix
     ./geogebra.nix
     ./netlogo.nix
     ./vlc.nix
