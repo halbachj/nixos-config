@@ -33,5 +33,6 @@
     ./geogebra.nix
     ./netlogo.nix
     ./vlc.nix
+    ./element.nix
   ];
 }
