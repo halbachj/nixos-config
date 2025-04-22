@@ -34,5 +34,6 @@
     ./netlogo.nix
     ./vlc.nix
     ./element.nix
+    ./umlet.nix
   ];
 }

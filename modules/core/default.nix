@@ -26,5 +26,6 @@
     ./netcat.nix
     ./nmap.nix
     ./zip.nix
+    ./octave.nix
   ];
 }
