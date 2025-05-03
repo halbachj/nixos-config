@@ -1,7 +1,16 @@
 { pkgs, lib, ... }:
 {
   programs.dconf.enable = true;
-  programs.zsh.enable = true;
+  programs.zsh = {
+    enable = true;
+    shellAliases = {
+      l    = "ls -alh";
+      ll   = "ls -l";
+      ls   = "ls --color=tty";
+      calc = "octave";
+    };
+  };
+
   programs.zsh.ohMyZsh = {
     enable = true;
     theme = "fino"; 

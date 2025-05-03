@@ -27,5 +27,6 @@
     ./nmap.nix
     ./zip.nix
     ./octave.nix
+    ./keepassxc.nix
   ];
 }
