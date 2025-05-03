@@ -7,33 +7,15 @@
     ./rofi.nix
     ./ghostty.nix
     ./anvim.nix
-    ./variety.nix
     ./spicetify.nix
     ./git.nix
     ./fonts.nix
     ./thunderbird.nix
     ./i3status-rs.nix
-    #./steam.nix
     ./latex.nix
     ./jetbrains.nix
-    ./arduino.nix
-    ./fritzing.nix
-    ./nemo.nix
-    ./signal-desktop.nix
-    ./qucs-s.nix
-    ./protonvpn.nix
-    ./zathura.nix
-    ./office.nix
-    ./bsdgames.nix
-    ./ghidra.nix
-    ./kicad.nix
-    #./inkscape.nix
-    ./viewnior.nix
-    #./rawtherapee.nix
-    ./geogebra.nix
-    ./netlogo.nix
-    ./vlc.nix
-    ./element.nix
-    ./umlet.nix
+    ./programs.nix
+
+    ./xdg.nix
   ];
 }
