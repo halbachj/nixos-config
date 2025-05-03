@@ -7,6 +7,11 @@
 }:
 {
   imports = [ inputs.home-manager.nixosModules.home-manager ];
+  nixpkgs.config.allowUnfreePredicate = pkg:
+    builtins.elem (pkgs.lib.getName pkg) [
+      "spotify"
+      "geogebra"
+    ];
   home-manager = {
     useUserPackages = true; # Install packages to /etc/profiles
     useGlobalPkgs = true;
