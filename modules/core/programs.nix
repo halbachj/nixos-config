@@ -3,11 +3,16 @@
   programs.dconf.enable = true;
   programs.zsh = {
     enable = true;
+    shellInit = ''
+      cheat() {
+        curl cheat.sh/"$1"
+      }
+    '';
     shellAliases = {
-      l    = "ls -alh";
-      ll   = "ls -l";
-      ls   = "ls --color=tty";
-      calc = "octave";
+      l     = "ls -alh";
+      ll    = "ls -l";
+      ls    = "ls --color=tty";
+      calc  = "octave";
     };
   };
 

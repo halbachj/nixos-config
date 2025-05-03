@@ -28,5 +28,6 @@
     ./zip.nix
     ./octave.nix
     ./keepassxc.nix
+    ./cloudflare.nix
   ];
 }
