@@ -15,7 +15,7 @@ HOST_PATH="hosts/${HOSTNAME}"
 DISKO_PATH="disko-configs/${HOSTNAME}.nix"
 
 echo "[*] Installing tools..."
-nix-shell -p git nixFlakes disko --run "true"
+nix-shell -p git disko --run "true"
 
 echo "[*] Cloning flake repo..."
 git clone "$REPO_URL" "$REPO_PATH"
