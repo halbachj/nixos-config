@@ -1,123 +1,58 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-### USER CONFIG ###
-REPO_URL="https://github.com/halbachj/nixos-config"
-DEFAULT_STATE_VERSION="24.05"
-###################
+# === CONFIGURATION ===
+REPO_URL="https://github.com/yourname/your-nixos-config.git"
+MOUNT=/mnt
+REPO_DIR="$MOUNT/etc/nixos"
+DISKO_CONFIG="hosts/common/disks.nix"
 
-read -p "Enter hostname: " HOSTNAME
-read -p "Target disk (e.g. /dev/sda or /dev/nvme0n1): " TARGET_DISK
+# === PROMPT FOR INPUT ===
+read -rp "Enter hostname: " HOSTNAME
+read -rp "Enter target disk (e.g. /dev/nvme0n1): " DISK
 
-MNT="/mnt"
-REPO_PATH="$MNT/etc/nixos"
-HOST_PATH="hosts/${HOSTNAME}"
-DISKO_PATH="disko-configs/${HOSTNAME}.nix"
+# === CLONE CONFIG ===
+git clone "$REPO_URL" "$REPO_DIR"
+cd "$REPO_DIR"
 
-echo "[*] Installing tools..."
-nix-shell -p git disko --run "true"
+# === APPLY DISKO PARTITIONING ===
+nix run github:nix-community/disko -- --mode disko "$DISKO_CONFIG" --arg device " \"$DISK\""
 
-echo "[*] Cloning flake repo..."
-git clone "$REPO_URL" "$REPO_PATH"
+# === MOUNT CHECK ===
+if ! mount | grep -q "$MOUNT"; then
+  echo "Error: Disk not mounted to $MOUNT after disko layout."
+  exit 1
+fi
 
-cd "$REPO_PATH"
+# === GENERATE HARDWARE CONFIG ===
+nixos-generate-config --root "$MOUNT"
 
-if [[ -f "$HOST_PATH/configuration.nix" && -f "$DISKO_PATH" ]]; then
-  echo "[✓] Host configuration found for $HOSTNAME. Proceeding with install..."
-else
-  echo "[*] No config for $HOSTNAME found. Generating one..."
+# === MOVE HARDWARE CONFIG ===
+HOST_DIR="hosts/$HOSTNAME"
+mkdir -p "$HOST_DIR"
+mv "$MOUNT/etc/nixos/hardware-configuration.nix" "$HOST_DIR/"
 
-  mkdir -p "$HOST_PATH" disko-configs
+# === WRITE configuration.nix ===
+cat > "$HOST_DIR/configuration.nix" <<EOF
+{ config, pkgs, ... }:
 
-  echo "[*] Creating disko config for $TARGET_DISK..."
-  cat > "$DISKO_PATH" <<EOF
 {
-  disko.devices.disk.main = {
-    type = "disk";
-    device = "${TARGET_DISK}";
-    content = {
-      type = "gpt";
-      partitions = {
-        ESP = {
-          size = "512M";
-          type = "EF00";
-            content = {
-              type = "filesystem";
-              format = "vfat";
-              mountpoint = "/boot";
-              mountOptions = [ "umask=0077" ];
-            };
-          };
-        luks = {
-          size = "100%";
-          content = {
-            type = "luks";
-            name = "crypted";
-            #passwordFile = "/tmp/secret.key"; # Interactive
-            settings = {
-              allowDiscards = true;
-              keyFile = "/tmp/secret.key";
-            };
-            #additionalKeyFiles = [ "/tmp/additionalSecret.key" ];
-            content = {
-              type = "btrfs";
-              extraArgs = [ "-f" ];
-              subvolumes = {
-                "/root" = {
-                  mountpoint = "/";
-                  mountOptions = [
-                    "compress=zstd"
-                    "noatime"
-                  ];
-                };
-                "/home" = {
-                  mountpoint = "/home";
-                  mountOptions = [
-                    "compress=zstd"
-                    "noatime"
-                  ];
-                };
-                "/nix" = {
-                  mountpoint = "/nix";
-                  mountOptions = [
-                    "compress=zstd"
-                    "noatime"
-                  ];
-                };
-                # Disable automatic swap creation for now... 
-                #"/swap" = {
-                #  mountpoint = "/.swapvol";
-                #  swap.swapfile.size = "20M";
-                #};
-              };
-            };
-          };
-        };
-      };
-    };
-  };
+  imports = [
+    ../../modules/common.nix
+    ../../$DISKO_CONFIG
+    ./hardware-configuration.nix
+  ];
+
+  networking.hostName = "$HOSTNAME";
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+  boot.initrd.luks.devices."cryptroot".device = "/dev/disk/by-partlabel/luks";
+
+  system.stateVersion = "24.05";
 }
 EOF
 
-  echo "[*] Applying disko layout..."
-  nix --extra-experimental-features run ".#diskoConfigurations.${HOSTNAME}.apply" -- --arg disk "\"${TARGET_DISK}\""
+# === INSTALL NIXOS ===
+nixos-install --flake "$REPO_DIR#$HOSTNAME"
 
-  echo "[*] Generating hardware configuration..."
-  nixos-generate-config --root "$MNT"
-
-  mv "$MNT/etc/nixos/hardware-configuration.nix" "$HOST_PATH/hardware.nix"
-  mv "$MNT/etc/nixos/configuration.nix" "$HOST_PATH/configuration.nix"
-
-  echo "[*] Patching configuration.nix to import disko..."
-  sed -i "1i\
-{ config, pkgs, ... }:\n" "$HOST_PATH/configuration.nix"
-  sed -i "/imports = \[/a\  ../../disko-configs/${HOSTNAME}.nix" "$HOST_PATH/configuration.nix"
-  sed -i "s/system.stateVersion = .*/system.stateVersion = \"${DEFAULT_STATE_VERSION}\";/" "$HOST_PATH/configuration.nix"
-
-  echo "[✓] Config for $HOSTNAME created."
-fi
-
-echo "[*] Installing NixOS via flake..."
-nixos-install --flake ".#${HOSTNAME}"
-
-echo "[✓] Done installing $HOSTNAME!"
+echo "✅ NixOS installed successfully with hostname: $HOSTNAME"
