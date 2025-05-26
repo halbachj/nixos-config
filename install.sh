@@ -2,7 +2,7 @@
 set -euo pipefail
 
 # === CONFIGURATION ===
-REPO_URL="https://github.com/yourname/your-nixos-config.git"
+REPO_URL="https://github.com/halbachj/nixos-config"
 MOUNT=/mnt
 REPO_DIR="$MOUNT/etc/nixos"
 DISKO_CONFIG="hosts/common/disks.nix"
