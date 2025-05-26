@@ -10,7 +10,7 @@ TMP="/tmp/nixos-install"
 # --- SCRIPT ---
 
 # Clone repo
-git clone "$REPO" "$REPO_DIR"
+git clone -b "feat/install-script" "$REPO" "$REPO_DIR"
 cd $REPO_DIR
 
 # Ask for hostname
