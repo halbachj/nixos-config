@@ -75,6 +75,13 @@
 	      host = "stone";
             };
           };
+	  feather = nixpkgs.lib.nixosSystem {
+	    modules = [ ./hosts/feather ];
+	    specialArgs = {
+	      inherit self inputs systemSettings userSettings;
+	      host = "feather";
+            };
+          };
         };
       };
 }
