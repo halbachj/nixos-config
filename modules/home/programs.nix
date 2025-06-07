@@ -25,6 +25,8 @@
     # SOFTWARE DESIGN
     #umlet
 
+    # DRONES N STUFF
+    mission-planner
 
     # COMMUNICATIONS
     # ----------------------

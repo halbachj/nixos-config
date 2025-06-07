@@ -35,6 +35,7 @@
     extraGroups = [
       "networkmanager"
       "wheel"
+      "dialout"
     ];
     hashedPassword = "${userSettings.hashedPassword}";
     shell = pkgs.zsh;

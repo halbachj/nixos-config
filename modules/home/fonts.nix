@@ -1,6 +1,6 @@
 { inputs, pkgs, ... }: {
   home.packages = with pkgs; [
-    nerd-fonts.jetbrains-mono
+    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
   ];
 
   fonts.fontconfig.enable = true;

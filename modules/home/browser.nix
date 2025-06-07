@@ -7,6 +7,9 @@
 }:
 {
   home.packages = (
-    with pkgs; [ inputs.zen-browser.packages."${systemSettings.system}".default ]
+    with pkgs; [ 
+        #inputs.zen-browser.packages."${systemSettings.system}".default
+        firefox-devedition 
+    ]
   );
 }

@@ -2,7 +2,7 @@
   description = "TwoStones nixos configuration";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/release-24.11";
     nur.url = "github:nix-community/NUR";
 		
     home-manager = {
