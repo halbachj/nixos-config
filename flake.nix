@@ -35,7 +35,7 @@
         timezone = "Europe/Dublin"; # select timezone
         locale = "en_US.UTF-8"; # select locale
         keymap = "de"; # console key map
-        stateVersion = "24.11";
+        stateVersion = "25.05";
 	system = "x86_64-linux";
       };
 

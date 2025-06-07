@@ -25,6 +25,7 @@
     git
     uutils-coreutils-noprefix
     ripgrep
+    pavucontrol
   ];
 
   time.timeZone = systemSettings.timezone;

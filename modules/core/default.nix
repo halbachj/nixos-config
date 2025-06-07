@@ -14,6 +14,7 @@
     ./nh.nix
     ./programs.nix
     ./system.nix
+    ./pipewire.nix
     ./wayland.nix
     ./security.nix
     ./user.nix
@@ -29,5 +30,6 @@
     ./octave.nix
     ./keepassxc.nix
     ./cloudflare.nix
+    ./virtualization.nix
   ];
 }

@@ -35,6 +35,8 @@
     extraGroups = [
       "networkmanager"
       "wheel"
+      "docker"
+      "audio"
     ];
     hashedPassword = "${userSettings.hashedPassword}";
     shell = pkgs.zsh;

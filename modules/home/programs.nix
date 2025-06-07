@@ -24,6 +24,7 @@
 
     # SOFTWARE DESIGN
     #umlet
+    graphviz
 
 
     # COMMUNICATIONS

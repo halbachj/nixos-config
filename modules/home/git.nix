@@ -36,7 +36,7 @@
     };
   };
 
-  #programs.gh.enable = true;
+  programs.gh.enable = true;
 
   programs.zsh.shellAliases = {
     g = "lazygit";

@@ -49,10 +49,10 @@
 	    format = " $icon {$combo.str(max_w:20) $play $next |}";
 	    player = "spotify";
 	  }
-	  #{
-	  #  block = "battery";
-	  #  format = "$icon $percentage {$time |}";
-	  #}
+	  {
+	    block = "battery";
+	    format = "$icon $percentage {$time |}";
+	  }
 	  {
 	    block = "net";
 	    format = " $icon {$signal_strength $ssid $frequency|Wired connection} via $device ";
