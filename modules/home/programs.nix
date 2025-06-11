@@ -73,11 +73,18 @@
     # ONLY OFFICE
     onlyoffice-desktopeditors
 
+    # Zoom
+    zoom-us
+
+    # SCUBA
+    # ----------------------
+    subsurface
 
     # VPNS
     # ----------------------
     # PROTON
-    #protonvpn-gui
+    protonvpn-gui
+    protonvpn-cli
 
 
     # UTILITIES

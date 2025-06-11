@@ -31,5 +31,7 @@
     ./keepassxc.nix
     ./cloudflare.nix
     ./virtualization.nix
+    ./tio.nix
+    ./battery.nix
   ];
 }
