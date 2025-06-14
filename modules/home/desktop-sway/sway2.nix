@@ -98,6 +98,11 @@ in {
           "${modifier}+k+u" = "input * xkb_layout \"us\"";
           "${modifier}+k+i" = "input * xkb_layout \"ie\"";
 
+          "XF86AudioRaiseVolume" = "exec 'pactl set-sink-volume @DEFAULT_SINK@ +1%'";
+          "XF86AudioLowerVolume" = "exec 'pactl set-sink-volume @DEFAULT_SINK@ -1%'";
+          "XF86AudioMute"        = "exec 'pactl set-sink-mute @DEFAULT_SINK@ toggle'";
+          "XF86AudioMicMute"     = "exec 'pactl set-source-mute @DEFAULT_SOURCE toggle'";
+
 	        ## Switch focus using hjkl
           "${modifier}+${left}" = "focus left";
           "${modifier}+${down}" = "focus down";
