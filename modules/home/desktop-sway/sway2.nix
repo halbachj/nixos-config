@@ -16,7 +16,7 @@ let
     webbrowser = "zen";
     #webbrowserPersistent = "firefox";
     musicplayer = "spotify";
-  in {
+in {
     home = {
       file = {
         #".config/sway/background.png".source = background;
@@ -44,11 +44,11 @@ let
         floating.border = 1;
         window.border = 1;
         bars = [
-	  {
-	    position = "top";
-      statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs /home/twostone/.config/i3status-rust/config-default.toml";
-	  }
-	];
+	        {
+	          position = "top";
+            statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs /home/twostone/.config/i3status-rust/config-default.toml";
+	        }
+	      ];
         fonts = {
           names = [ "Jetbrains Mono Nerd Font" ];
           style = "Regular Bold";
@@ -61,10 +61,10 @@ let
             xkb_options = "grp:alt_shift_toggle";
             xkb_numlock = "enable";
           };
-	  "1452:591:Keychron_K4_Keychron_K4" = {
+	        "1452:591:Keychron_K4_Keychron_K4" = {
             xkb_layout = "us";
             xkb_options = "caps:none";
-	  };
+	        };
         };
         menu = menu;
         modifier = modifier;
@@ -72,9 +72,9 @@ let
         down = down;
         up = up;
         right = right;
-	keycodebindings = {
-	  "--release 133" = "exec ${menu}"; 
-	};
+	      keycodebindings = {
+	        "--release 133" = "exec ${menu}"; 
+	      };
         workspaceOutputAssign = [
           { workspace = "1"; output = "DP-1"; }
           { workspace = "2"; output = "DP-1"; }
@@ -90,7 +90,7 @@ let
         keybindings = {
           "${modifier}+Shift+c" = "reload";
           # Kill focused window
-	  "${modifier}+c" = "kill";
+                                "${modifier}+c" = "kill";
           "${modifier}+Return" = "exec ghostty";
           "${modifier}+Shift+s" = "exec grim -g \"$(slurp)\" - | xclip -i -selection clipboard -t image/png";
           "${modifier}+Shift+p" = "exec grim -g \"$(slurp)\" ~/Pictures/Screenshots/$(date +'%Y-%m-%d_%H-%M-%S').png";
@@ -98,7 +98,7 @@ let
           "${modifier}+k+u" = "input * xkb_layout \"us\"";
           "${modifier}+k+i" = "input * xkb_layout \"ie\"";
 
-	  ## Switch focus using hjkl
+	        ## Switch focus using hjkl
           "${modifier}+${left}" = "focus left";
           "${modifier}+${down}" = "focus down";
           "${modifier}+${up}" = "focus up";
@@ -114,7 +114,7 @@ let
           "${modifier}+Shift+${left}" = "move left";
           "${modifier}+Shift+${down}" = "move down";
           "${modifier}+Shift+${up}" = "move up";
-	  "${modifier}+Shift+${right}" = "move right";
+	        "${modifier}+Shift+${right}" = "move right";
 
           ### With arrow keys
           "${modifier}+Shift+Left" = "move left";
@@ -206,8 +206,8 @@ let
           { command = "mako"; }
           # Polkit
           { command = "/run/current-system/sw/libexec/polkit-gnome-authentication-agent-1"; }#
-	  # wm name
-	  { command = "wmname LG3D"; }
+	        # wm name
+	        { command = "wmname LG3D"; }
           # Idle
           #{ command = "$HOME/.config/sway/idle.sh"; }
           { command = "export _JAVA_AWT_WM_NONREPARENTING=1"; }
@@ -217,11 +217,11 @@ let
         workspaceAutoBackAndForth = true;
         output = {
           "*" = { 
-	    #bg = "${background} fit #1d2021";
-	  };
+	          #bg = "${background} fit #1d2021";
+	        };
           # You can get the names of your outputs by running: swaymsg -t get_outputs
           # Right monitor
-  	  DVI-D-1 = {
+  	      DVI-D-1 = {
             resolution = "1920x1080";
             position = "2970,0";
           };
@@ -235,11 +235,12 @@ let
             resolution = "1680x1050";
             position = "0,0";
             transform = "90";
-          };        };
-          #focus = "DP-1";
+          };
+        };
+        #focus = "DP-1";
       };
     };
-        home.packages = with pkgs; [
-        tesseract4 waybar i3status-rust wmname ulauncher wofi wofi-emoji slurp grim swappy swaylock-effects notify-desktop mako libappindicator 
-        ];
+    home.packages = with pkgs; [
+      tesseract4 waybar i3status-rust wmname ulauncher wofi wofi-emoji slurp grim swappy swaylock-effects notify-desktop mako libappindicator 
+    ];
 }

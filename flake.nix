@@ -63,7 +63,6 @@
           allowBroken = false;
           allowUnsupportedSystem = false;
           allowUnfree = true;
-          # contentAddressedByDefault = true; # Causes too many things to be rebuilt, even with additional caches as above
         };
       };
     };

@@ -17,6 +17,7 @@
     flake.nixosModules.common-base
     flake.nixosModules.desktop-base
                 #flake.nixosModules.desktop-base-extra
+    flake.nixosModules.laptop-base
     flake.nixosModules.desktop-sway
 
     flake.nixosModules.users-twostone
