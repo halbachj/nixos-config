@@ -20,6 +20,8 @@
     flake.nixosModules.laptop-base
     flake.nixosModules.desktop-sway
 
+    flake.homeModules.desktop-games
+
     flake.nixosModules.users-twostone
   ];
 
