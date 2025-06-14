@@ -17,6 +17,7 @@
     flake.homeModules.desktop-base
     flake.homeModules.desktop-base-extra
     flake.homeModules.desktop-sway
+    flake.homeModules.desktop-sway-laptop
 
     # User specific
     flake.homeModules.users-twostone-common

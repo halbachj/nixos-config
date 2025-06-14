@@ -42,9 +42,7 @@
 
       oh-my-zsh = {
         enable = true;
-        #theme = "powerlevel10k/powerlevel10k";
-        #plugins = [ "git" "sudo" "docker" "kubectl" "dirhistory" "history" ];
-        #custom = "${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k";
+        plugins = [ "git" "sudo" "docker" "kubectl" "dirhistory" "history" ];
       };
     };
   };
