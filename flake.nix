@@ -2,7 +2,10 @@
   description = "TwoStones nixos configuration";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs = {
+      url = "github:NixOS/nixpkgs/nixos-unstable";
+    };
+
     nur.url = "github:nix-community/NUR";
 
     systems.url = "github:nix-systems/default";
@@ -41,6 +44,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nix-flatpak = {
+      url = "github:gmodena/nix-flatpak";
+    };
+
   };
   outputs =
     inputs:
@@ -49,15 +56,15 @@
       nixpkgs = {
         # Load overlays
         overlays = [
+          inputs.nur.overlays.default
         ];
         # Pretty standard stuff set by default, but making it explicit
         config = {
           allowBroken = false;
           allowUnsupportedSystem = false;
-          allowUnfree = false;
+          allowUnfree = true;
           # contentAddressedByDefault = true; # Causes too many things to be rebuilt, even with additional caches as above
         };
       };
     };
-
 }

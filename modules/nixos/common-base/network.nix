@@ -62,4 +62,7 @@
       };
     };
   };
+  services = {
+    tailscale.enable = true;
+  };
 }

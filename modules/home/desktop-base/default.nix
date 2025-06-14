@@ -11,6 +11,7 @@
     ./ghostty.nix
     ./anvim.nix
     ./mozilla.nix
+                #./browser.nix
   ];
 }
 

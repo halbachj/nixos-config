@@ -16,11 +16,12 @@
     
     flake.nixosModules.common-base
     flake.nixosModules.desktop-base
+                #flake.nixosModules.desktop-base-extra
     flake.nixosModules.desktop-sway
 
     flake.nixosModules.users-twostone
   ];
 
   networking.hostName = "feather";
-  system.stateVersion = "24.05";
+  system.stateVersion = "25.05";
 }

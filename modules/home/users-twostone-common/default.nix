@@ -13,7 +13,6 @@ _: {
     homeDirectory = "/home/twostone";
     sessionVariables = { };
   };
-
   programs.git = {
     userEmail = "johannes@halbachnet.de";
     userName = "Johannes Halbach";

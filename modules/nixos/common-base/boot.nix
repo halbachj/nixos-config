@@ -7,38 +7,38 @@
 # https://codeberg.org/delliott/nixos-config
 
 { pkgs, lib, ... }:
+let
+  lim = 15;
+  systems = {
+    ext4 = true;
+    fat32 = true;
+    btrfs = true;
+    zfs = false;
+  };
+in
 {
   boot = {
+    kernelPackages = pkgs.linuxPackages_latest;
+    supportedFilesystems = systems;
     loader = {
-      timeout = 5;
-
-      efi = {
-        canTouchEfiVariables = true;
-        efiSysMountPoint = "/boot";
-      };
-
-      systemd-boot.enable = false;
+      efi.canTouchEfiVariables = true;
       grub = {
+        enable = lib.mkDefault false;
+        configurationLimit = lim;
+      };
+      generic-extlinux-compatible = {
+        enable = lib.mkDefault false;
+        configurationLimit = lim;
+      };
+      systemd-boot = {
         enable = lib.mkDefault true;
-        useOSProber = true;
-        efiSupport = true;
-        #efiInstallAsRemovable = true; # Other wise /boot/EFI/BOOT/BOOTX64.EFI isn't generated.
-        devices = [ "nodev" ];
-        extraEntriesBeforeNixOS = true;
-        extraEntries = ''
-          menuentry "Reboot" {
-            reboot
-          }
-          menuentry "Poweroff" {
-            halt
-          }
-          '';
+        configurationLimit = lim;
+        editor = false;
       };
     };
-    supportedFilesystems = [ "ntfs" ];
     initrd = {
-      systemd.enable = lib.mkDefault true;
-      supportedFilesystems = [ "ext4" "ntfs" "btrfs" "fat32" ];
+                        #systemd.enable = lib.mkDefault true;
+      supportedFilesystems = systems;
     };
   };
 }

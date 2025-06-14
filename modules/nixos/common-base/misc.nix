@@ -9,16 +9,18 @@
 { pkgs, lib, ... }:
 {
   # Select internationalisation properties.
-  i18n.defaultLocale = "en_IE.UTF-8";
+  i18n.defaultLocale = "de_DE.UTF-8";
 
   environment = {
     systemPackages = with pkgs; [
-      helix
+                        #anvim
+      bat
+      wget
       git
     ];
     variables = {
-      VISUAL = "hx";
-      EDITOR = "hx";
+      VISUAL = "nvim";
+      EDITOR = "nvim";
     };
     defaultPackages = with pkgs; [ rsync ];
   };
@@ -26,7 +28,10 @@
   # More modern user management
   services.userborn.enable = true;
   users.mutableUsers = false;
-  
+
+  programs.nix-ld.enable = true;
+  nixpkgs.config.allowUnfree = true; # TODO: Replace with unfree predicate instead of allowing all
+
   services = {};
 }
 
