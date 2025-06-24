@@ -7,7 +7,7 @@
 {
   boot.initrd.luks.devices."cryptroot" = {
     allowDiscards = true;
-    preLVM = false;
+    #preLVM = false;
   };
   #fileSystems = {
   #  # "/".device = lib.mkForce "/dev/disk/by-partlabel/root";

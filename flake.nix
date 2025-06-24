@@ -48,6 +48,10 @@
       url = "github:gmodena/nix-flatpak";
     };
 
+    cursor = {
+      url = "github:omarcresp/cursor-flake/main";
+    };
+
   };
   outputs =
     inputs:

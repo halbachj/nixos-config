@@ -26,7 +26,10 @@
         ls    = "ls --color=tty";
         calc  = "octave";
       };
-      initContent = lib.mkOrder 1500 "source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
+      initContent = lib.mkOrder 1500 ''
+        source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
+        source ~/.p10k.zsh
+      '';
       sessionVariables = {
         POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true;
       };
@@ -38,7 +41,7 @@
           file = "share/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
         }
       ];
-      initExtra = "source ~/.p10k.zsh";
+      #initExtra = "source ~/.p10k.zsh";
 
       oh-my-zsh = {
         enable = true;

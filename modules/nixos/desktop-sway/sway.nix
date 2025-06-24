@@ -34,6 +34,9 @@
     ];
   };
 
+  #services.xserver.enable = true;
+  #services.xserver.displayManager.lightdm.enable = true;
+  #services.xserver.desktopManager.gnome.enable = false;
   services.greetd = {
     enable = true;
     settings = {
@@ -43,4 +46,14 @@
       };
     };
   };
+
+  #environment.etc."sway-session.desktop".text = ''
+  #[Desktop Entry]
+  #Name=Sway
+  #Comment=An i3-compatible Wayland compositor
+  #Exec=sway
+  #Type=Application
+  #DesktopNames=Sway
+  #''; 
+
 }

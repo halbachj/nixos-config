@@ -11,6 +11,7 @@
   imports = [
     ./power.nix
     ./backlight.nix
+    ./bluetooth.nix
   ];
 }
 
