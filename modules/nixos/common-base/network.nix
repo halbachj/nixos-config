@@ -1,68 +1,72 @@
-# SPDX-FileCopyrightText: 2024 2025
-# SPDX-FileContributor: Darragh Elliott
-#
-# SPDX-License-Identifier: MIT
-
-# Curtesy from Darragh who showed me NixOS
-# https://codeberg.org/delliott/nixos-config
+{ config, lib, pkgs, ... }:
 
 {
-  config,
-  lib,
-  pkgs,
-  ...
-}:
-{
+  ############################
+  ##   Networking stack    ##
+  ############################
   networking = {
-    # Turn a bunch of stuff off originally, and then enable as needed.
-    # Disable this stuff, as its handled either by network manager on desktops, or systemd networkd on servers
+    # Disable legacy DHCP client; NetworkManager handles DHCP itself.
     dhcpcd.enable = false;
-    useDHCP = false;
-    # Dont try and convert networking settings to networkd.
-    useNetworkd = false;
-    nameservers = [
-      # Quad9 with default setup
-      # https://www.quad9.net/service/service-addresses-and-features
-      "9.9.9.9"
-      "149.112.112.112"
-      "2620:fe::fe"
-      "2620:fe::9"
-    ];
+    useDHCP       = false;
+
+    # Stay on NetworkManager (not systemd-networkd).
+    useNetworkd   = false;
+
+    # Let systemd-resolved own /etc/resolv.conf instead of openresolv.
+    resolvconf.enable = false;
+
+    ## Wi-Fi / iwd ##########################################################
     wireless = {
-      # wireless.enable enables wpa_supplicant, which I dont want
-      enable = false;
-      # Required for networkManager
-      dbusControlled = true;
+      enable         = false;  # don’t run wpa_supplicant directly
+      dbusControlled = true;   # required for NetworkManager integration
+
       iwd = {
         enable = true;
-        # https://iwd.wiki.kernel.org/networkconfigurationsettings
         settings = {
-          General = {
-            AddressRandomization = "network";
-          };
-          Network = {
-            EnableIPv6 = true;
+          General  = { AddressRandomization = "network"; };
+          Network  = {
+            EnableIPv6          = true;
             NameResolvingService = "systemd";
           };
           Settings = {
-            AutoConnect = true;
+            AutoConnect          = true;
             AlwaysRandomizeAddress = true;
           };
         };
       };
     };
+
+    ## NetworkManager #######################################################
     networkmanager = {
-      enable = lib.mkDefault true;
-      dns = "systemd-resolved";
+      enable = true;
+      dns    = "systemd-resolved";      # tell NM to delegate DNS
       wifi = {
-        backend = "iwd";
-        macAddress = "random";
+        backend            = "iwd";
+        macAddress         = "random";
         scanRandMacAddress = true;
-        # powersave = true; # Seems to cause frequent connection drops
+        # powersave = true;  # caused drops, left commented
       };
     };
   };
+
+  ############################
+  ##      Services          ##
+  ############################
   services = {
+    ## DNS resolver ###########################################
+    resolved = {
+      enable = true;  # starts systemd-resolved & creates stub /etc/resolv.conf
+
+      # Quad-9 (security-filtered, no-log) as fallback servers.
+      fallbackDns = [
+        "9.9.9.9"
+        "149.112.112.112"
+        "2620:fe::fe"
+        "2620:fe::9"
+      ];
+    };
+
+    ## Tailscale ##############################################
     tailscale.enable = true;
   };
 }
