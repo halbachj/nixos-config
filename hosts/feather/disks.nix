@@ -15,60 +15,114 @@
   #};
 
 
-  disko.devices.disk.main = {
-    type = "disk";
-    device = disk;
-    content = {
-      type = "gpt";
-      partitions = {
-        ESP = {
-	  size = "2000M";
-          type = "EF00";
-          content = {
-            type = "filesystem";
-            format = "vfat";
-            mountpoint = "/boot";
-            mountOptions = [ "umask=0077" ];
-          };
-        };
-        luks = {
-          size = "100%";
-          content = {
-            type = "luks";
-            name = "cryptroot";
-            settings = {
-              allowDiscards = true;
+  disko.devices = {
+    disk = {
+      main = {
+        type = "disk";
+        device = disk;
+        content = {
+          type = "gpt";
+          partitions = {
+            ESP = {
+              size = "2000M";
+              type = "EF00";
+              content = {
+                type = "filesystem";
+                format = "vfat";
+                mountpoint = "/boot";
+                mountOptions = [ "umask=0077" ];
+              };
             };
-            content = {
-              type = "btrfs";
-              extraArgs = [ "-f" ]; # Override existing partition
-              subvolumes = {
-                "/root" = {
-                  mountOptions = [
-                    "compress=zstd"
-                    "noatime"
-                  ];
-                  mountpoint = "/";
+            luks = {
+              size = "100%";
+              content = {
+                type = "luks";
+                name = "cryptroot";
+                settings = {
+                  allowDiscards = true;
                 };
-                "/home" = {
-                  mountOptions = [
-                    "compress=zstd"
-                    "noatime"
-                  ];
-                  mountpoint = "/home";
-                };
-                "/nix" = {
-                  mountOptions = [
-                    "compress=zstd"
-                    "noatime"
-                  ];
-                  mountpoint = "/nix";
-                };
-                "/swap" = {
-                  mountpoint = "/swap";
-                  swap.swapfile.size = "28G";
+                content = {
+                  type = "btrfs";
+                  #extraArgs = [ "-f" ]; # Override existing partition
+                  subvolumes = {
+                    "/root" = {
+                      mountOptions = [
+                        "compress=zstd"
+                        "noatime"
+                      ];
+                      mountpoint = "/";
+                    };
+                    "/home" = {
+                      mountOptions = [
+                        "compress=zstd"
+                        "noatime"
+                      ];
+                      mountpoint = "/home";
+                    };
+                    "/nix" = {
+                      mountOptions = [
+                        "compress=zstd"
+                        "noatime"
+                      ];
+                      mountpoint = "/nix";
+                    };
+                    "/swap" = {
+                      mountpoint = "/swap";
+                      swap.swapfile.size = "28G";
+                    };
+                  };
                 };
               };
+            };
+          };
+        };
+      };
+      arch = {
+        type = "disk";
+        device = "/dev/nvme1n1";
+        content = {
+          type = "gpt";
+          partitions = {
+            ESP = {
+              size = "512M";
+              type = "EF00";
+              content = {
+                type = "filesystem";
+                format = "vfat";
+              };
+            };
+            luks = {
+              size = "100%";
+              content = {
+                type = "luks";
+                name = "cryptarch";
+                extraOpenArgs = [ ];
+                settings = {
+                  # if you want to use the key for interactive login be sure there is no trailing newline
+                  # for example use `echo -n "password" > /tmp/secret.key`
+                  keyFile = "/etc/secrets/cryptarch.key";
+                  allowDiscards = true;
+                };
+                content = {
+                  type = "lvm_pv";
+                  vg = "main";
+                };
+              };
+            };
+          };
+        };
+      };
+    };
+    lvm_vg = {
+      main = {
+        type = "lvm_vg";
+        lvs = {
+          home = {
+            size = "100%";
+            content = {
+              type = "filesystem";
+              format = "ext4";
+              mountpoint = "/cryptarch";
             };
           };
         };
