@@ -3,7 +3,7 @@
   home.packages = with pkgs.jetbrains; [
     jdk-no-jcef
     pycharm-professional
-    #clion
+    clion
     #idea-ultimate
   ];
 

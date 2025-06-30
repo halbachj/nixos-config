@@ -1,7 +1,8 @@
 {
   lib,
   config,
-  disk ? "/dev/vda",
+  diskA ? "/dev/vda",
+  diskB ? "/dev/vdb",
   ...
 }:
 {
@@ -9,6 +10,7 @@
     allowDiscards = true;
     #preLVM = false;
   };
+
   #fileSystems = {
   #  # "/".device = lib.mkForce "/dev/disk/by-partlabel/root";
   #  "/boot".device = lib.mkForce "/dev/disk/by-label/NIXOS-BOOT";
@@ -19,7 +21,7 @@
     disk = {
       main = {
         type = "disk";
-        device = disk;
+        device = diskA;
         content = {
           type = "gpt";
           partitions = {
@@ -77,10 +79,11 @@
           };
         };
       };
-      arch = {
+      data = {
         type = "disk";
-        device = "/dev/nvme1n1";
+        device = diskB;
         content = {
+          neededForBoot = false;
           type = "gpt";
           partitions = {
             ESP = {
@@ -91,21 +94,22 @@
                 format = "vfat";
               };
             };
-            luks = {
+            data = {
               size = "100%";
               content = {
                 type = "luks";
-                name = "cryptarch";
+                name = "cryptdata";
                 extraOpenArgs = [ ];
                 settings = {
                   # if you want to use the key for interactive login be sure there is no trailing newline
                   # for example use `echo -n "password" > /tmp/secret.key`
-                  keyFile = "/etc/secrets/cryptarch.key";
+                  keyFile = "/sysroot/etc/secrets/cryptarch.key";
                   allowDiscards = true;
                 };
                 content = {
+                  neededForBoot = false;
                   type = "lvm_pv";
-                  vg = "main";
+                  vg = "data";
                 };
               };
             };
@@ -114,12 +118,13 @@
       };
     };
     lvm_vg = {
-      main = {
+      data = {
         type = "lvm_vg";
         lvs = {
           home = {
             size = "100%";
             content = {
+              neededForBoot = false;
               type = "filesystem";
               format = "ext4";
               mountpoint = "/cryptarch";
@@ -129,6 +134,7 @@
       };
     };
   };
+
   # Trim because disk is ssd 
   services.fstrim.enable = true;
 }

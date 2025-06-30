@@ -5,10 +5,12 @@
     ./spicetify.nix
     ./discord/discord.nix
     ./jetbrains.nix
+    ./cad.nix
     ./flatpak.nix
     ./zed.nix
     ./cursor.nix
     ./misc.nix
+    ./matlab.nix
   ];
 }
 
