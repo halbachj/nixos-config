@@ -8,6 +8,7 @@
   home.packages = with pkgs; [
     ripgrep
     zsh-powerlevel10k
+    pay-respects
     (lib.hiPrio uutils-coreutils-noprefix)
   ];
 
@@ -27,6 +28,7 @@
         calc  = "octave";
       };
       initContent = lib.mkOrder 1500 ''
+        eval "$(pay-respects zsh --alias)"
         source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
         source ~/.p10k.zsh
       '';

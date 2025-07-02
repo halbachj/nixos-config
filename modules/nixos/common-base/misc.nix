@@ -17,6 +17,7 @@
       bat
       wget
       git
+      htop
     ];
     variables = {
       VISUAL = "nvim";

@@ -44,6 +44,16 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nix-matlab = {
+      # nix-matlab's Nixpkgs input follows Nixpkgs' nixos-unstable branch. However
+      # your Nixpkgs revision might not follow the same branch. You'd want to
+      # match your Nixpkgs and nix-matlab to ensure fontconfig related
+      # compatibility.
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "gitlab:doronbehar/nix-matlab";
+    };
+
+
     nix-flatpak = {
       url = "github:gmodena/nix-flatpak";
     };
@@ -61,6 +71,7 @@
         # Load overlays
         overlays = [
           inputs.nur.overlays.default
+          inputs.nix-matlab.overlay
         ];
         # Pretty standard stuff set by default, but making it explicit
         config = {

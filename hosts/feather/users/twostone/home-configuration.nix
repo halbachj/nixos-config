@@ -19,6 +19,7 @@
     flake.homeModules.desktop-sway
     flake.homeModules.desktop-sway-laptop
 
+    flake.homeModules.games
 
     # User specific
     flake.homeModules.users-twostone-common

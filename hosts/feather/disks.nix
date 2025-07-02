@@ -59,7 +59,7 @@
                         "compress=zstd"
                         "noatime"
                       ];
-                      mountpoint = "/home";
+                      mountpoint = "/data";
                     };
                     "/nix" = {
                       mountOptions = [
@@ -79,62 +79,45 @@
           };
         };
       };
-      data = {
+      home = {
         type = "disk";
         device = diskB;
         content = {
-          neededForBoot = false;
           type = "gpt";
           partitions = {
-            ESP = {
-              size = "512M";
-              type = "EF00";
-              content = {
-                type = "filesystem";
-                format = "vfat";
-              };
-            };
             data = {
               size = "100%";
               content = {
                 type = "luks";
-                name = "cryptdata";
+                name = "crypthome";
                 extraOpenArgs = [ ];
                 settings = {
                   # if you want to use the key for interactive login be sure there is no trailing newline
                   # for example use `echo -n "password" > /tmp/secret.key`
-                  keyFile = "/sysroot/etc/secrets/cryptarch.key";
+                  keyFile = "/sysroot/etc/secrets/crypthome.key";
                   allowDiscards = true;
                 };
                 content = {
-                  neededForBoot = false;
-                  type = "lvm_pv";
-                  vg = "data";
+                  type = "btrfs";
+                  #extraArgs = [ "-f" ]; # Override existing partition
+                  subvolumes = {
+                    "/home" = {
+                      mountOptions = [
+                        "compress=zstd"
+                        "noatime"
+                      ];
+                      mountpoint = "/home";
+                    };
+                  };
                 };
               };
-            };
-          };
-        };
-      };
-    };
-    lvm_vg = {
-      data = {
-        type = "lvm_vg";
-        lvs = {
-          home = {
-            size = "100%";
-            content = {
-              neededForBoot = false;
-              type = "filesystem";
-              format = "ext4";
-              mountpoint = "/cryptarch";
             };
           };
         };
       };
     };
   };
-
+  #fileSystems."/cryptarch".neededForBoot = false;
   # Trim because disk is ssd 
   services.fstrim.enable = true;
 }

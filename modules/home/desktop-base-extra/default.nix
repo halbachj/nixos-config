@@ -10,7 +10,7 @@
     ./zed.nix
     ./cursor.nix
     ./misc.nix
-    ./matlab.nix
+    #./matlab.nix
   ];
 }
 

@@ -41,7 +41,7 @@ in
     initrd = {
       systemd.enable = lib.mkDefault true;
       supportedFilesystems = systems;
-      #verbose = false; # Used for plymouth
+      verbose = true; # Used for plymouth
     };
 
     #plymouth = {
@@ -58,7 +58,7 @@ in
     # Enable "Silent boot"
     #consoleLogLevel = 3;
     #kernelParams = [
-    #   "quiet"
+    #  "quiet"
     #  "splash"
     #  "boot.shell_on_fail"
     #  "udev.log_priority=3"

@@ -9,7 +9,7 @@
 { ... }:
 {
   imports = [
-    ./jetbrains.nix
+    ./flatpak.nix
   ];
 }
 
