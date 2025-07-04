@@ -41,29 +41,29 @@ in
     initrd = {
       systemd.enable = lib.mkDefault true;
       supportedFilesystems = systems;
-      verbose = true; # Used for plymouth
+      verbose = false; # Used for plymouth
     };
 
-    #plymouth = {
-    #  enable = true;
-    #  theme = "glowing";
-    #    themePackages = with pkgs; [
-    #    # By default we would install all themes
-    #    (adi1090x-plymouth-themes.override {
-    #      selected_themes = [ "glowing" ];
-    #    })
-    #  ];
-    #};
+    plymouth = {
+      enable = true;
+      theme = "glowing";
+        themePackages = with pkgs; [
+        # By default we would install all themes
+        (adi1090x-plymouth-themes.override {
+          selected_themes = [ "glowing" ];
+        })
+      ];
+    };
 
     # Enable "Silent boot"
-    #consoleLogLevel = 3;
-    #kernelParams = [
-    #  "quiet"
-    #  "splash"
-    #  "boot.shell_on_fail"
-    #  "udev.log_priority=3"
-    #  "rd.systemd.show_status=auto"
-    #];
+    consoleLogLevel = 3;
+    kernelParams = [
+      "quiet"
+      "splash"
+      "boot.shell_on_fail"
+      "udev.log_priority=3"
+      "rd.systemd.show_status=auto"
+    ];
   };
 }
 

@@ -31,9 +31,9 @@
         ll    = "ls -l";
         ls    = "ls --color=tty";
         calc  = "octave";
-        cd    = "zoxide"; # using zoxide instead of normal cd
       };
       initContent = lib.mkOrder 1500 ''
+        eval "$(zoxide init zsh)"
         eval "$(pay-respects zsh --alias)"
         source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
         source ~/.p10k.zsh
