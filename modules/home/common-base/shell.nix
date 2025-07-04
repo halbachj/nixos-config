@@ -5,7 +5,12 @@
   ... 
 }:
 {
+  home.sessionVariables = {
+    PATH = "$HOME/.local/bin:$PATH";
+  };
+
   home.packages = with pkgs; [
+    zoxide
     ripgrep
     zsh-powerlevel10k
     pay-respects
@@ -26,6 +31,7 @@
         ll    = "ls -l";
         ls    = "ls --color=tty";
         calc  = "octave";
+        cd    = "zoxide"; # using zoxide instead of normal cd
       };
       initContent = lib.mkOrder 1500 ''
         eval "$(pay-respects zsh --alias)"
