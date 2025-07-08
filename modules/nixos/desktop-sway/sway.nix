@@ -37,11 +37,13 @@
   #services.xserver.enable = true;
   #services.xserver.displayManager.lightdm.enable = true;
   #services.xserver.desktopManager.gnome.enable = false;
+  #programs.regreet.enable = true;
+  #programs.gtkgreet.enable = true;
   services.greetd = {
     enable = true;
     settings = {
       default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd sway";
+          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd sway";
         user = "greeter";
       };
     };

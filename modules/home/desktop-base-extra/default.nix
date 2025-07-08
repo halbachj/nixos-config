@@ -10,6 +10,7 @@
     ./zed.nix
     ./cursor.nix
     ./misc.nix
+    ./audio.nix
     #./matlab.nix
   ];
 }

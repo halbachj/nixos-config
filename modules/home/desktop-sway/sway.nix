@@ -56,10 +56,10 @@ let
             xkb_options = "grp:alt_shift_toggle";
             xkb_numlock = "enable";
           };
-	  "1452:591:Keychron_K4_Keychron_K4" = {
+	        "1452:591:Keychron_K4_Keychron_K4" = {
             xkb_layout = "us";
             xkb_options = "caps:none";
-	  };
+	        };
         };
         menu = menu;
         modifier = modifier;

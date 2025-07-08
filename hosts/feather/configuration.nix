@@ -13,7 +13,9 @@
 
     inputs.nixos-facter-modules.nixosModules.facter
     { config.facter.reportPath = ./facter.json; }
-    
+
+    inputs.nixos-hardware.nixosModules.lenovo-thinkpad-e14-amd
+
     flake.nixosModules.common-base
     flake.nixosModules.desktop-base
     flake.nixosModules.desktop-base-extra
@@ -25,6 +27,7 @@
     flake.nixosModules.users-twostone
   ];
 
+  hardware.enableAllFirmware = true;
   networking.hostName = "feather";
   system.stateVersion = "25.05";
 }

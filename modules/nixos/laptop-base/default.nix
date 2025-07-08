@@ -12,6 +12,8 @@
     ./power.nix
     ./backlight.nix
     ./bluetooth.nix
+    ./webcam.nix
+    ./fingerprint.nix
   ];
 }
 

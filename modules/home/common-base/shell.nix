@@ -31,12 +31,18 @@
         ll    = "ls -l";
         ls    = "ls --color=tty";
         calc  = "octave";
+        nos   = "nh os switch";
+        nob   = "nh os build";
       };
       initContent = lib.mkOrder 1500 ''
         eval "$(zoxide init zsh)"
         eval "$(pay-respects zsh --alias)"
         source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
         source ~/.p10k.zsh
+
+        cheat() {
+          curl -s "https://cheat.sh/$1"
+        }
       '';
       sessionVariables = {
         POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true;

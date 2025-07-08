@@ -18,6 +18,7 @@
       wget
       git
       htop
+      groff
     ];
     variables = {
       VISUAL = "nvim";
