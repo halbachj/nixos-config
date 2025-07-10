@@ -9,5 +9,6 @@
 {
   imports = [
     ./email.nix
+    ./ausweis.nix
   ];
 }
