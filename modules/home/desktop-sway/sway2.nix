@@ -46,6 +46,10 @@ in {
         bars = [
 	        {
 	          position = "top";
+            colors.background = "#00000096";
+            fonts = {
+              names = [ "JetBrainsMono NF" "Font Awesome 6 Free" ];
+            };
             statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs /home/twostone/.config/i3status-rust/config-default.toml";
 	        }
 	      ];
@@ -88,15 +92,19 @@ in {
           { workspace = "10"; output = "HDMI-A-2"; }
         ];
         keybindings = {
-          "${modifier}+Shift+c" = "reload";
+          "${modifier}+Shift+r" = "reload";
           # Kill focused window
                                 "${modifier}+c" = "kill";
           "${modifier}+Return" = "exec ghostty";
           "${modifier}+Shift+s" = "exec grim -g \"$(slurp)\" - | xclip -i -selection clipboard -t image/png";
-          "${modifier}+Shift+p" = "exec grim -g \"$(slurp)\" ~/Pictures/Screenshots/$(date +'%Y-%m-%d_%H-%M-%S').png";
+          "${modifier}+Shift+c" = "exec grim -g \"$(slurp)\" ~/Pictures/Screenshots/$(date +'%Y-%m-%d_%H-%M-%S').png";
           "${modifier}+k+d" = "input * xkb_layout \"de\"";
           "${modifier}+k+u" = "input * xkb_layout \"us\"";
           "${modifier}+k+i" = "input * xkb_layout \"ie\"";
+
+          "${modifier}+Shift+n" = "exec variety -n";
+          "${modifier}+Shift+p" = "exec variety -p";
+          "${modifier}+Shift+f" = "exec variety -f";
 
           "XF86AudioRaiseVolume" = "exec 'pactl set-sink-volume @DEFAULT_SINK@ +1%'";
           "XF86AudioLowerVolume" = "exec 'pactl set-sink-volume @DEFAULT_SINK@ -1%'";
@@ -213,6 +221,8 @@ in {
           { command = "/run/current-system/sw/libexec/polkit-gnome-authentication-agent-1"; }#
 	        # wm name
 	        { command = "wmname LG3D"; }
+          # BG switcher
+	        { command = "variety"; }
           # Idle
           #{ command = "$HOME/.config/sway/idle.sh"; }
           { command = "export _JAVA_AWT_WM_NONREPARENTING=1"; }
@@ -246,6 +256,6 @@ in {
       };
     };
     home.packages = with pkgs; [
-      tesseract4 waybar i3status-rust wmname ulauncher wofi wofi-emoji slurp grim swappy swaylock-effects notify-desktop mako libappindicator 
+      tesseract4 waybar i3status-rust wmname ulauncher wofi wofi-emoji slurp grim swappy swaylock-effects notify-desktop mako libappindicator swaybg waytrogen feh
     ];
 }

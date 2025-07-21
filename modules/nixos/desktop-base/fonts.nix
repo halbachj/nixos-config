@@ -13,6 +13,7 @@
     enableDefaultPackages = false;
     packages = with pkgs; [
       nerd-fonts.symbols-only
+      nerd-fonts.jetbrains-mono
       # These are all required for full noto support
       noto-fonts
       noto-fonts-cjk-sans
@@ -20,6 +21,8 @@
       noto-fonts-lgc-plus
       noto-fonts-color-emoji
       noto-fonts-monochrome-emoji
+
+      font-awesome
     ];
     enableGhostscriptFonts = false;
     fontDir.enable = lib.mkForce false;

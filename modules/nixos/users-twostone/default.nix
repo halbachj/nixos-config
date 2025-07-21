@@ -19,6 +19,7 @@
           "wheel"
           "dialout"
           "video"
+          "cdrom"
         ]
         ++ lib.optionals config.networking.networkmanager.enable [ "networkmanager" ];
       hashedPassword = "$6$eO9zT8YVzpR.Z1Eg$nnBg9ryZgmcXYzc9gdgEdWDFvSNgTysLo2HO0NGafk0RGi8PpyigVwtiwBTG1Z/0Rm9lWPTeLzbixLrdhkwsA/";

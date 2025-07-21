@@ -3,8 +3,8 @@
     enable = true;
     bars = {
       default = {
+	      icons = "material-nf";
         theme = "semi-native";
-	      icons = "awesome4";
 	      settings = {
 	        icons = {
 	          overrides = {

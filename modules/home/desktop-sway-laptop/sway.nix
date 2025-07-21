@@ -7,7 +7,7 @@
     };
     config.input = {} // {
       "2:14:ETPS/2_Elantech_Touchpad" = {
-        natural_scroll = "disabled";
+        natural_scroll = "enabled";
       };
     };
   };

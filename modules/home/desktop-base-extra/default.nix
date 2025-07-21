@@ -11,6 +11,8 @@
     ./cursor.nix
     ./misc.nix
     ./audio.nix
+    ./wallpaper.nix
+    ./octave.nix
     #./matlab.nix
   ];
 }

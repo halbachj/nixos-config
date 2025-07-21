@@ -6,6 +6,7 @@
     wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
     wl-clipboard-x11
     mako # notification system developed by swaywm maintainer # TODO move to sway config
+    waypipe
   ];
 
   services.gnome.gnome-keyring.enable = true;

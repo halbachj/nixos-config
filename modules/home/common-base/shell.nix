@@ -10,7 +10,6 @@
   };
 
   home.packages = with pkgs; [
-    zoxide
     ripgrep
     zsh-powerlevel10k
     pay-respects
@@ -21,6 +20,14 @@
     bash = {
       enable = true;
       historyFile = "${config.xdg.stateHome}/bash/bash_history";
+    };
+
+    zoxide = {
+      enable = true;
+      enableZshIntegration = true;
+      options = [
+        "--cmd cd"
+      ];
     };
 
     zsh = {

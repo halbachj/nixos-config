@@ -10,6 +10,7 @@
   imports = [
     ./ghostty.nix
     ./anvim.nix
+    ./helix
     ./mozilla.nix
                 #./browser.nix
   ];

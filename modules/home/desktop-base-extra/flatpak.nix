@@ -28,6 +28,7 @@
       "com.discordapp.Discord"
       "im.riot.Riot"
       "org.signal.Signal"
+      "org.gnome.Brasero"
     ];
     update.auto = {
       enable = true;

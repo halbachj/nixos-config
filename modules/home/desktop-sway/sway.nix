@@ -235,6 +235,6 @@ let
       };
     };
     home.packages = with pkgs; [
-      tesseract4 waybar i3status-rust wmname ulauncher wofi wofi-emoji slurp grim swappy swaylock-effects notify-desktop mako libappindicator 
+      tesseract4 waybar i3status-rust wmname ulauncher wofi wofi-emoji slurp grim swappy swaylock-effects notify-desktop mako libappindicator swaybg
     ];
 }
