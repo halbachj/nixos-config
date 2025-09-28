@@ -12,6 +12,7 @@
   home.packages = with pkgs; [
     ripgrep
     zsh-powerlevel10k
+    fzf
     pay-respects
     (lib.hiPrio uutils-coreutils-noprefix)
   ];
@@ -47,9 +48,10 @@
         source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
         source ~/.p10k.zsh
 
-        cheat() {
-          curl -s "https://cheat.sh/$1"
-        }
+        if [ -n "$\{commands[fzf-share]\}" ]; then
+          source "$(fzf-share)/key-bindings.zsh"
+          source "$(fzf-share)/completion.zsh"
+        fi
       '';
       sessionVariables = {
         POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true;

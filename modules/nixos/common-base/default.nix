@@ -8,5 +8,6 @@
     ./sudo.nix
     ./nh.nix
     ./misc.nix
+    ./time.nix
   ];
 }

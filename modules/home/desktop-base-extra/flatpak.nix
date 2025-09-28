@@ -29,6 +29,9 @@
       "im.riot.Riot"
       "org.signal.Signal"
       "org.gnome.Brasero"
+
+      "org.expresslrs.ExpressLRSConfigurator"
+      "org.cubocore.CoreFM"
     ];
     update.auto = {
       enable = true;

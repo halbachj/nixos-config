@@ -4,7 +4,7 @@
     enable = true;
     clean = {
       enable = true;
-      extraArgs = "--keep-since 7d --keep 5";
+      extraArgs = "--keep-since 5d --keep 4";
     };
     flake = "/home/twostone/nixos-config";
   };

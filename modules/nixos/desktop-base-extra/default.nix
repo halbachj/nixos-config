@@ -10,6 +10,10 @@
 {
   imports = [
     ./flatpak.nix
+    ./wine.nix
+    ./matlab.nix
+    ./misc.nix
+    ./openvpn.nix
   ];
 }
 

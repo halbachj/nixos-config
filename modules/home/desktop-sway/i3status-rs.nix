@@ -47,6 +47,23 @@
 	            block = "net";
 	            format = " $icon {$signal_strength $ssid $frequency|Wired connection} via $device ";
 	          }
+            #[[block]]
+            #block = "keyboard_layout"
+            #driver = "sway"
+            #format = " $layout "
+            #[block.mappings]
+            #"English (Workman)" = "EN"
+            {
+              block = "keyboard_layout";
+              driver = "sway";
+              format = " $layout ";
+              sway_kb_identifier = "6058:20564:ThinkPad_Extra_Buttons";
+              #mappings = {
+              #  "English (US)" = "us";
+              #  "German" = "de";
+              #  "English (IE)" = "ie";
+              #};
+            }
 	          {
 	            block = "time";
 	            interval = 6;

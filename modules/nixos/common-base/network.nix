@@ -15,6 +15,9 @@
     # Let systemd-resolved own /etc/resolv.conf instead of openresolv.
     resolvconf.enable = false;
 
+    # To use protonvpn
+    firewall.checkReversePath = false;
+
     ## Wi-Fi / iwd ##########################################################
     wireless = {
       enable         = false;  # don’t run wpa_supplicant directly

@@ -3,13 +3,16 @@
     bars = {
       default = {
         blocks = lib.mkMerge[
-	        (lib.mkOrder 500 [{
+	        (lib.mkOrder 500 [
+          {
 	          block = "backlight";
 	        }
 	        {
 	          block = "battery";
 	          format = "$icon $percentage {$time |}";
-	        }])];
+	        }
+          
+          ])];
       };
     };
   };

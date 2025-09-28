@@ -45,16 +45,10 @@
       url = "github:halbachj/anvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    nix-matlab = {
-      # nix-matlab's Nixpkgs input follows Nixpkgs' nixos-unstable branch. However
-      # your Nixpkgs revision might not follow the same branch. You'd want to
-      # match your Nixpkgs and nix-matlab to ensure fontconfig related
-      # compatibility.
-      inputs.nixpkgs.follows = "nixpkgs";
-      url = "gitlab:doronbehar/nix-matlab";
+    
+    nixpkgs-matlab-fork = {
+      url = "github:james-atkins/nixpkgs/pr/matlab";
     };
-
 
     nix-flatpak = {
       url = "github:gmodena/nix-flatpak";
@@ -67,13 +61,35 @@
   };
   outputs =
     inputs:
+    let
+      nixpkgs-fork-overlay = final: prev:
+      let
+        # bring in the helper + tool from the fork
+        fetchFromMPM = final.callPackage
+          (inputs.nixpkgs-matlab-fork + "/pkgs/by-name/ma/matlab-package-manager/fetcher.nix")
+          { };
+
+        matlab-package-manager = final.callPackage
+          (inputs.nixpkgs-matlab-fork + "/pkgs/by-name/ma/matlab-package-manager/package.nix")
+          { };
+      in {
+        inherit fetchFromMPM matlab-package-manager;
+
+        # now the main package can resolve its deps
+        matlab = final.callPackage
+          (inputs.nixpkgs-matlab-fork + "/pkgs/by-name/ma/matlab/package.nix")
+          {
+            inherit fetchFromMPM matlab-package-manager;
+          };
+      };
+    in
     inputs.blueprint {
       inherit inputs;
       nixpkgs = {
         # Load overlays
         overlays = [
           inputs.nur.overlays.default
-          inputs.nix-matlab.overlay
+          nixpkgs-fork-overlay
         ];
         # Pretty standard stuff set by default, but making it explicit
         config = {

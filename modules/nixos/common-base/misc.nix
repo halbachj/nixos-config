@@ -19,6 +19,7 @@
       git
       htop
       groff
+      cp210x-program
     ];
     variables = {
       VISUAL = "nvim";

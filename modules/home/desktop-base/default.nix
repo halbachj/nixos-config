@@ -13,6 +13,7 @@
     ./helix
     ./mozilla.nix
                 #./browser.nix
+    ./gtk.nix
   ];
 }
 

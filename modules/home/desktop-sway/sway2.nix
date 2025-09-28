@@ -16,10 +16,11 @@ let
     webbrowser = "zen";
     #webbrowserPersistent = "firefox";
     musicplayer = "spotify";
+    background = "./background.jpg";
 in {
     home = {
       file = {
-        #".config/sway/background.png".source = background;
+        ".config/sway/background.jpg".source = ./background.jpg;
         #".config/sway/idle.sh".source = ./idle.sh;
         #".config/sway/drive-mount.sh".source = ./drive-mount.sh;
         #".config/sway/drive-unmount.sh".source = ./drive-unmount.sh;
@@ -94,13 +95,16 @@ in {
         keybindings = {
           "${modifier}+Shift+r" = "reload";
           # Kill focused window
-                                "${modifier}+c" = "kill";
+          "${modifier}+c" = "kill";
           "${modifier}+Return" = "exec ghostty";
+          "${modifier}+m" = "exec rofi -show ssh";
           "${modifier}+Shift+s" = "exec grim -g \"$(slurp)\" - | xclip -i -selection clipboard -t image/png";
           "${modifier}+Shift+c" = "exec grim -g \"$(slurp)\" ~/Pictures/Screenshots/$(date +'%Y-%m-%d_%H-%M-%S').png";
           "${modifier}+k+d" = "input * xkb_layout \"de\"";
           "${modifier}+k+u" = "input * xkb_layout \"us\"";
           "${modifier}+k+i" = "input * xkb_layout \"ie\"";
+          "${modifier}+Shift+y" = "${pkgs.swaylock-effects}/bin/swaylock --screenshots --clock --indicator --indicator-radius 100 --indicator-thickness 7 --effect-blur 7x5 --effect-vignette 0.5:0.5 --ring-color bb00cc  --key-hl-color 880033 --line-color 00000000 --inside-color 00000088 --separator-color 00000000 --font 'JetBrains Nerdfont Mono' --grace 2 --fade-in 0.4 --daemonize";
+          
 
           "${modifier}+Shift+n" = "exec variety -n";
           "${modifier}+Shift+p" = "exec variety -p";
@@ -222,17 +226,18 @@ in {
 	        # wm name
 	        { command = "wmname LG3D"; }
           # BG switcher
-	        { command = "variety"; }
-          # Idle
-          #{ command = "$HOME/.config/sway/idle.sh"; }
+          #{ command = "variety"; }
+          # Java tiling wm fix
           { command = "export _JAVA_AWT_WM_NONREPARENTING=1"; }
+          #wayneko (the cat)
+          #{ command = "wayneko --layer overlay &"; }
         ];
         #terminal = flake.alacritty;  # TODO: Remove! Why is this here???
         window.titlebar = false;
         workspaceAutoBackAndForth = true;
         output = {
           "*" = { 
-	          #bg = "${background} fit #1d2021";
+	          bg = "${background} fill #1d2021";
 	        };
           # You can get the names of your outputs by running: swaymsg -t get_outputs
           # Right monitor
@@ -256,6 +261,6 @@ in {
       };
     };
     home.packages = with pkgs; [
-      tesseract4 waybar i3status-rust wmname ulauncher wofi wofi-emoji slurp grim swappy swaylock-effects notify-desktop mako libappindicator swaybg waytrogen feh
+      tesseract4 waybar i3status-rust wmname ulauncher slurp grim swappy swaylock-effects notify-desktop mako libappindicator swaybg waytrogen feh wayneko glpaper
     ];
 }

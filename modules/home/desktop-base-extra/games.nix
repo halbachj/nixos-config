@@ -1,9 +1,9 @@
 { inputs, pkgs, system, ... }: {
-
   home.packages = with pkgs; [
-    freecad
-    kicad
+    #veloren
+    airshipper
+    mindustry
+    endless-sky
+    bsdgames
   ];
-
-
 }

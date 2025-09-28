@@ -8,11 +8,12 @@
     ./cad.nix
     ./flatpak.nix
     ./zed.nix
-    ./cursor.nix
     ./misc.nix
     ./audio.nix
     ./wallpaper.nix
     ./octave.nix
+    ./games.nix
+    ./ai.nix
     #./matlab.nix
   ];
 }

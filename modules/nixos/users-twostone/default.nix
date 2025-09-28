@@ -5,7 +5,7 @@
 
 # Curtesy to Darrag, who showed me NixOS
 
-{ config, lib, ... }:
+{ config, lib, pkgs, ... }:
 {
 
   users = {
@@ -29,6 +29,5 @@
     };
     groups.users.gid = 100;
   };
-
 }
 
