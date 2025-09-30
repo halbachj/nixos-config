@@ -1,10 +1,3 @@
-# SPDX-FileCopyrightText: 2024 2025
-# SPDX-FileContributor: Darragh Elliott
-#
-# SPDX-License-Identifier: MIT
-
-# Curtesy to Darrag, who showed me NixOS
-
 { config, lib, pkgs, ... }:
 {
 

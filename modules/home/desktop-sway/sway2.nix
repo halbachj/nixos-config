@@ -261,6 +261,6 @@ in {
       };
     };
     home.packages = with pkgs; [
-      tesseract4 waybar i3status-rust wmname ulauncher slurp grim swappy swaylock-effects notify-desktop mako libappindicator swaybg waytrogen feh wayneko glpaper
+      tesseract4 waybar i3status-rust wmname slurp grim swappy swaylock-effects notify-desktop mako libappindicator swaybg waytrogen feh wayneko glpaper
     ];
 }

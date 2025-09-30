@@ -17,8 +17,8 @@
       "2:14:ETPS/2_Elantech_TrackPoint" = {
         natural_scroll = "enabled";
         tap = "enabled";
-        accel_profile = "flat";
-        pointer_accel = "0";
+        #accel_profile = "flat";
+        #pointer_accel = "0";
         dwtp = "disabled";
         dwt = "disabled";
       };

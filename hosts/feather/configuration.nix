@@ -29,6 +29,7 @@
     flake.nixosModules.users-twostone
   ];
 
+  home-manager.useGlobalPkgs = false;
   hardware.enableAllFirmware = true;
   networking.hostName = "feather";
   system.stateVersion = "25.05";

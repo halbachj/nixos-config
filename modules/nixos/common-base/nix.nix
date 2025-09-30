@@ -65,7 +65,6 @@
         "nix-command"
         "flakes"
         "auto-allocate-uids"
-        "ca-derivations"
         "cgroups"
       ];
       # Set the nix path in the nix config file to the above nix path
@@ -84,7 +83,7 @@
   system = {
     switch = {
       enable = false;
-      enableNg = true;
+      #enableNg = true;
     };
     rebuild = {
       enableNg = true;
