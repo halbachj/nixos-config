@@ -82,12 +82,10 @@
   # Use the new shiny rebuild and switch scripts
   system = {
     switch = {
-      enable = false;
-      #enableNg = true;
+      enable = true;
     };
     rebuild = {
       enableNg = true;
     };
   };
 }
-

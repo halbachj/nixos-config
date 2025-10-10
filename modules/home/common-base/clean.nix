@@ -2,7 +2,7 @@
 {
   nix.gc = {
     automatic = true;
-    frequency = "weekly";
+    dates = "weekly";
     # Keep only the last 10 generations
     # see https://nix.dev/manual/nix/2.25/command-ref/nix-collect-garbage
     # and https://nix.dev/manual/nix/2.25/command-ref/nix-env/delete-generations#generations-count
@@ -22,4 +22,3 @@
     };
   };
 }
-

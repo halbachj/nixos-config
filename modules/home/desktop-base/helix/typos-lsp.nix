@@ -5,4 +5,3 @@
     languages.language-server.typos-lsp.command = "typos-lsp";
   };
 }
-

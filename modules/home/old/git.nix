@@ -1,10 +1,10 @@
 { inputs, pkgs, ... }:
 {
-  home.packages = [ 
-  #  pkgs.git
+  home.packages = [
+    #  pkgs.git
     pkgs.git-credential-manager
-  #  # pkgs.git-lfs
-  ]; 
+    #  # pkgs.git-lfs
+  ];
   programs.git = {
     enable = true;
     package = pkgs.gitFull;
@@ -15,12 +15,10 @@
     extraConfig = {
       init.defaultBranch = "main";
       merge.conflictstyle = "diff3";
-      
+
       credential = {
         credentialStore = "secretservice";
-	credential.helper = "${
-          pkgs.git.override { withLibsecret = true; }
-        }/bin/git-credential-libsecret";
+        credential.helper = "${pkgs.git.override { withLibsecret = true; }}/bin/git-credential-libsecret";
       };
       diff.colorMoved = "default";
     };

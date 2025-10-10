@@ -1,4 +1,5 @@
-{ inputs, pkgs, ... }: {
+{ inputs, pkgs, ... }:
+{
 
   home.packages = with pkgs; [
 
@@ -25,7 +26,6 @@
     # SOFTWARE DESIGN
     #umlet
 
-
     # COMMUNICATIONS
     # ----------------------
 
@@ -34,7 +34,6 @@
 
     # SIGNAL
     signal-desktop
-
 
     # GAMES AND SUCH
     # ----------------------
@@ -45,7 +44,6 @@
     # STEAM
     #steam
 
-
     # IMAGES AND DESIGN
     # ----------------------
 
@@ -54,7 +52,6 @@
 
     # RAW THERAPEE
     rawtherapee
-
 
     # FILES AND SUCH
     # ----------------------
@@ -65,19 +62,16 @@
     # NEXTCLOUD
     nextcloud-client
 
-
-    # OFFICE 
+    # OFFICE
     # ----------------------
 
     # ONLY OFFICE
     onlyoffice-desktopeditors
 
-
     # VPNS
     # ----------------------
     # PROTON
     #protonvpn-gui
-
 
     # UTILITIES
     # ----------------------

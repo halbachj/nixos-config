@@ -16,7 +16,6 @@
   #  "/boot".device = lib.mkForce "/dev/disk/by-label/NIXOS-BOOT";
   #};
 
-
   disko.devices = {
     disk = {
       main = {
@@ -118,6 +117,6 @@
     };
   };
   #fileSystems."/cryptarch".neededForBoot = false;
-  # Trim because disk is ssd 
+  # Trim because disk is ssd
   services.fstrim.enable = true;
 }

@@ -1,4 +1,10 @@
-{ inputs, pkgs, system, ... }: {
+{
+  inputs,
+  pkgs,
+  system,
+  ...
+}:
+{
 
   home.packages = with pkgs; [
     jetbrains-toolbox
@@ -7,6 +13,5 @@
     jetbrains.clion
     #idea-ultimate
   ];
-
 
 }

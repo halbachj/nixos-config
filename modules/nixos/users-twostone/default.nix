@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 {
 
   users = {
@@ -7,14 +12,13 @@
       description = "twostone";
       linger = true;
       uid = 1000;
-      extraGroups =
-        [
-          "wheel"
-          "dialout"
-          "video"
-          "cdrom"
-        ]
-        ++ lib.optionals config.networking.networkmanager.enable [ "networkmanager" ];
+      extraGroups = [
+        "wheel"
+        "dialout"
+        "video"
+        "cdrom"
+      ]
+      ++ lib.optionals config.networking.networkmanager.enable [ "networkmanager" ];
       hashedPassword = "$6$eO9zT8YVzpR.Z1Eg$nnBg9ryZgmcXYzc9gdgEdWDFvSNgTysLo2HO0NGafk0RGi8PpyigVwtiwBTG1Z/0Rm9lWPTeLzbixLrdhkwsA/";
 
       name = "twostone"; # name/identifier
@@ -23,4 +27,3 @@
     groups.users.gid = 100;
   };
 }
-

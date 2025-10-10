@@ -1,4 +1,5 @@
-{ config, osConfig, ... }: {
+{ config, osConfig, ... }:
+{
   imports = [
     ./rofi.nix
   ];

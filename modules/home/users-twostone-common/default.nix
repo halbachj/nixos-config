@@ -5,7 +5,8 @@
 
 # Curtesy to Darragh, who showed me NixOS
 
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home = {
@@ -21,11 +22,15 @@
   home.packages = [ pkgs.distant ];
 
   systemd.user.services.distant-manager = {
-    Unit    = { Description = "distant manager"; };
+    Unit = {
+      Description = "distant manager";
+    };
     Service = {
       ExecStart = "${pkgs.distant}/bin/distant manager listen --user";
-      Restart   = "on-failure";
+      Restart = "on-failure";
     };
-    Install = { WantedBy = [ "default.target" ]; };  # Home-Manager syntax
+    Install = {
+      WantedBy = [ "default.target" ];
+    }; # Home-Manager syntax
   };
 }

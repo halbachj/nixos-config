@@ -16,4 +16,3 @@
     ./openvpn.nix
   ];
 }
-

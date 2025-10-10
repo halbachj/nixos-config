@@ -6,7 +6,5 @@
   ...
 }:
 {
-  home.packages = (
-    with pkgs; [ inputs.zen-browser.packages."${systemSettings.system}".default ]
-  );
+  home.packages = (with pkgs; [ inputs.zen-browser.packages."${systemSettings.system}".default ]);
 }

@@ -58,6 +58,5 @@ in
     keybind = ctrl+shift+right=unbind
     keybind = shift+enter=text:\n
   '';
-  xdg.configFile."ghostty/themes/gruvbox".text = ''
-  '';
+  xdg.configFile."ghostty/themes/gruvbox".text = '''';
 }

@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   ############################
@@ -7,10 +12,10 @@
   networking = {
     # Disable legacy DHCP client; NetworkManager handles DHCP itself.
     dhcpcd.enable = false;
-    useDHCP       = false;
+    useDHCP = false;
 
     # Stay on NetworkManager (not systemd-networkd).
-    useNetworkd   = false;
+    useNetworkd = false;
 
     # Let systemd-resolved own /etc/resolv.conf instead of openresolv.
     resolvconf.enable = false;
@@ -20,19 +25,21 @@
 
     ## Wi-Fi / iwd ##########################################################
     wireless = {
-      enable         = false;  # don’t run wpa_supplicant directly
-      dbusControlled = true;   # required for NetworkManager integration
+      enable = false; # don’t run wpa_supplicant directly
+      dbusControlled = true; # required for NetworkManager integration
 
       iwd = {
         enable = true;
         settings = {
-          General  = { AddressRandomization = "network"; };
-          Network  = {
-            EnableIPv6          = true;
+          General = {
+            AddressRandomization = "network";
+          };
+          Network = {
+            EnableIPv6 = true;
             NameResolvingService = "systemd";
           };
           Settings = {
-            AutoConnect          = true;
+            AutoConnect = true;
             AlwaysRandomizeAddress = true;
           };
         };
@@ -42,10 +49,10 @@
     ## NetworkManager #######################################################
     networkmanager = {
       enable = true;
-      dns    = "systemd-resolved";      # tell NM to delegate DNS
+      dns = "systemd-resolved"; # tell NM to delegate DNS
       wifi = {
-        backend            = "iwd";
-        macAddress         = "random";
+        backend = "iwd";
+        macAddress = "random";
         scanRandMacAddress = true;
         # powersave = true;  # caused drops, left commented
       };
@@ -58,7 +65,7 @@
   services = {
     ## DNS resolver ###########################################
     resolved = {
-      enable = true;  # starts systemd-resolved & creates stub /etc/resolv.conf
+      enable = true; # starts systemd-resolved & creates stub /etc/resolv.conf
 
       # Quad-9 (security-filtered, no-log) as fallback servers.
       fallbackDns = [

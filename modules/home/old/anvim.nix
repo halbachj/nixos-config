@@ -1,12 +1,17 @@
-{ pkgs, inputs, systemSettings, ... }:
+{
+  pkgs,
+  inputs,
+  systemSettings,
+  ...
+}:
 
 let
   anvim = inputs.anvim.packages.${systemSettings.system}.default;
-in {
+in
+{
   home.packages = [ anvim ];
 
   programs.neovim = {
     defaultEditor = true;
   };
 }
-

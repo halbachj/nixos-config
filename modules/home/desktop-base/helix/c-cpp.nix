@@ -4,18 +4,29 @@
     extraPackages = with pkgs; [ clang-tools ];
     languages.language = [
       {
-        name            = "c";
-        language-servers = [ "clangd" "typos-lsp" ];
+        name = "c";
+        language-servers = [
+          "clangd"
+          "typos-lsp"
+        ];
         formatter.command = "clang-format";
-        roots           = [ ".git" "CMakeLists.txt" ];
+        roots = [
+          ".git"
+          "CMakeLists.txt"
+        ];
       }
       {
-        name            = "cpp";
-        language-servers = [ "clangd" "typos-lsp" ];
+        name = "cpp";
+        language-servers = [
+          "clangd"
+          "typos-lsp"
+        ];
         formatter.command = "clang-format";
-        roots           = [ ".git" "CMakeLists.txt" ];
+        roots = [
+          ".git"
+          "CMakeLists.txt"
+        ];
       }
     ];
   };
 }
-

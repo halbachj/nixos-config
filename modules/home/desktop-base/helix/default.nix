@@ -9,4 +9,3 @@
     ./typos-lsp.nix
   ];
 }
-

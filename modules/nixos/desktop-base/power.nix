@@ -12,4 +12,3 @@ _: {
     powertop.enable = true;
   };
 }
-

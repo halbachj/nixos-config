@@ -1,8 +1,9 @@
-{ inputs, pkgs, ... }: {
+{ inputs, pkgs, ... }:
+{
   programs.thunderbird = {
     enable = true;
     profiles = {
-      halbachnet.isDefault = true;     
+      halbachnet.isDefault = true;
     };
   };
 }

@@ -44,14 +44,19 @@
     enable = true;
     settings = {
       default_session = {
-          command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd sway";
+        command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd sway";
         user = "greeter";
       };
     };
   };
 
   security.pam.loginLimits = [
-    { domain = "@users"; item = "rtprio"; type = "-"; value = 1; }
+    {
+      domain = "@users";
+      item = "rtprio";
+      type = "-";
+      value = 1;
+    }
   ];
 
   #environment.etc."sway-session.desktop".text = ''
@@ -61,6 +66,6 @@
   #Exec=sway
   #Type=Application
   #DesktopNames=Sway
-  #''; 
+  #'';
 
 }

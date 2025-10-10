@@ -21,7 +21,7 @@
       noto-fonts-lgc-plus
       noto-fonts-color-emoji
       noto-fonts-monochrome-emoji
-      
+
       corefonts
       dejavu_fonts
 
@@ -49,4 +49,3 @@
     };
   };
 }
-

@@ -1,4 +1,9 @@
-{inputs, userSettings, host, ...}:
+{
+  inputs,
+  userSettings,
+  host,
+  ...
+}:
 {
   imports = [
     ./sway.nix

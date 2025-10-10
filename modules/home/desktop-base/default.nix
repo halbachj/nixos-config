@@ -12,8 +12,7 @@
     ./anvim.nix
     ./helix
     ./mozilla.nix
-                #./browser.nix
+    #./browser.nix
     ./gtk.nix
   ];
 }
-

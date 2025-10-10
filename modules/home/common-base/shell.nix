@@ -2,7 +2,7 @@
   pkgs,
   config,
   lib,
-  ... 
+  ...
 }:
 {
   home.sessionVariables = {
@@ -35,12 +35,12 @@
       enable = true;
       enableCompletion = true;
       shellAliases = {
-        l     = "ls -alh";
-        ll    = "ls -l";
-        ls    = "ls --color=tty";
-        calc  = "octave";
-        nos   = "nh os switch";
-        nob   = "nh os build";
+        l = "ls -alh";
+        ll = "ls -l";
+        ls = "ls --color=tty";
+        calc = "octave";
+        nos = "nh os switch";
+        nob = "nh os build";
       };
       initContent = lib.mkOrder 1500 ''
         eval "$(zoxide init zsh)"
@@ -54,7 +54,7 @@
         fi
       '';
       sessionVariables = {
-        POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true;
+        POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD = true;
       };
 
       plugins = [
@@ -68,7 +68,14 @@
 
       oh-my-zsh = {
         enable = true;
-        plugins = [ "git" "sudo" "docker" "kubectl" "dirhistory" "history" ];
+        plugins = [
+          "git"
+          "sudo"
+          "docker"
+          "kubectl"
+          "dirhistory"
+          "history"
+        ];
       };
     };
   };

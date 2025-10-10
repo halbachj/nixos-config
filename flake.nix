@@ -45,7 +45,7 @@
       url = "github:halbachj/anvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    
+
     nixpkgs-matlab-fork = {
       url = "github:james-atkins/nixpkgs/pr/matlab";
     };
@@ -62,26 +62,26 @@
   outputs =
     inputs:
     let
-      nixpkgs-fork-overlay = final: prev:
-      let
-        # bring in the helper + tool from the fork
-        fetchFromMPM = final.callPackage
-          (inputs.nixpkgs-matlab-fork + "/pkgs/by-name/ma/matlab-package-manager/fetcher.nix")
-          { };
+      nixpkgs-fork-overlay =
+        final: prev:
+        let
+          # bring in the helper + tool from the fork
+          fetchFromMPM = final.callPackage (
+            inputs.nixpkgs-matlab-fork + "/pkgs/by-name/ma/matlab-package-manager/fetcher.nix"
+          ) { };
 
-        matlab-package-manager = final.callPackage
-          (inputs.nixpkgs-matlab-fork + "/pkgs/by-name/ma/matlab-package-manager/package.nix")
-          { };
-      in {
-        inherit fetchFromMPM matlab-package-manager;
+          matlab-package-manager = final.callPackage (
+            inputs.nixpkgs-matlab-fork + "/pkgs/by-name/ma/matlab-package-manager/package.nix"
+          ) { };
+        in
+        {
+          inherit fetchFromMPM matlab-package-manager;
 
-        # now the main package can resolve its deps
-        matlab = final.callPackage
-          (inputs.nixpkgs-matlab-fork + "/pkgs/by-name/ma/matlab/package.nix")
-          {
+          # now the main package can resolve its deps
+          matlab = final.callPackage (inputs.nixpkgs-matlab-fork + "/pkgs/by-name/ma/matlab/package.nix") {
             inherit fetchFromMPM matlab-package-manager;
           };
-      };
+        };
     in
     inputs.blueprint {
       inherit inputs;

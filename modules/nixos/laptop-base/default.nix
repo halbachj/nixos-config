@@ -16,4 +16,3 @@
     ./fingerprint.nix
   ];
 }
-

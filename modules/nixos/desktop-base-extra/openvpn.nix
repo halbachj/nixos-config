@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   #environment.systemPackages = [
   #  pkgs.openvpn3
   #];
@@ -8,5 +9,3 @@
   #  "libsoup-2.74.3"
   #];
 }
-
-

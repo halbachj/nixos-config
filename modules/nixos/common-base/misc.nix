@@ -13,7 +13,7 @@
 
   environment = {
     systemPackages = with pkgs; [
-                        #anvim
+      #anvim
       bat
       wget
       git
@@ -35,6 +35,5 @@
   programs.nix-ld.enable = true;
   nixpkgs.config.allowUnfree = true; # TODO: Replace with unfree predicate instead of allowing all
 
-  services = {};
+  services = { };
 }
-
