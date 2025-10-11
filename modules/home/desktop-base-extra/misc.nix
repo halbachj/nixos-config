@@ -12,5 +12,6 @@
     rquickshare
     keepassxc
     subsurface
+    coder
   ];
 }
