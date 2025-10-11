@@ -13,6 +13,6 @@
     keepassxc
     subsurface
     coder
-    jellyfin
+    jellyfin-media-player
   ];
 }
