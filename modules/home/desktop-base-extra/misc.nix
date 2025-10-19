@@ -13,6 +13,8 @@
     keepassxc
     subsurface
     coder
-    jellyfin-media-player
+    jellyfin-mpv-shim
+    slack-cli
+    slack
   ];
 }
