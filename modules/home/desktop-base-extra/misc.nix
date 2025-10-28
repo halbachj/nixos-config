@@ -15,6 +15,8 @@
     coder
     jellyfin-mpv-shim
     slack-cli
-    slack
+    slack-term
+    slacky
+    qucs-s
   ];
 }

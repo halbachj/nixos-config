@@ -51,8 +51,6 @@
       substituters = [
         # Normal
         "https://cache.nixos.org/"
-        # For ca derivations
-        "https://cache.ngi0.nixos.org/"
         # Self explanatory
         "https://nix-community.cachix.org"
       ];
