@@ -27,7 +27,6 @@ in
   home = {
     file = {
       ".config/sway/background.jpg".source = ./background.jpg;
-      #".config/sway/idle.sh".source = ./idle.sh;
       #".config/sway/drive-mount.sh".source = ./drive-mount.sh;
       #".config/sway/drive-unmount.sh".source = ./drive-unmount.sh;
       #".config/sway/scan-barcode.sh".source = ./scan-barcode.sh;
@@ -140,15 +139,17 @@ in
         "${modifier}+Shift+s" = "exec grim -g \"$(slurp)\" - | xclip -i -selection clipboard -t image/png";
         "${modifier}+Shift+c" =
           "exec grim -g \"$(slurp)\" ~/Pictures/Screenshots/$(date +'%Y-%m-%d_%H-%M-%S').png";
-        "${modifier}+k+d" = "input * xkb_layout \"de\"";
-        "${modifier}+k+u" = "input * xkb_layout \"us\"";
-        "${modifier}+k+i" = "input * xkb_layout \"ie\"";
-        "${modifier}+Shift+y" =
-          "${pkgs.swaylock-effects}/bin/swaylock --screenshots --clock --indicator --indicator-radius 100 --indicator-thickness 7 --effect-blur 7x5 --effect-vignette 0.5:0.5 --ring-color bb00cc  --key-hl-color 880033 --line-color 00000000 --inside-color 00000088 --separator-color 00000000 --font 'JetBrains Nerdfont Mono' --grace 2 --fade-in 0.4 --daemonize";
+        "${modifier}+m+d" = "input * xkb_layout \"de\"";
+        "${modifier}+m+u" = "input * xkb_layout \"us\"";
+        "${modifier}+m+i" = "input * xkb_layout \"ie\"";
+        "${modifier}+Shift+z" = "${pkgs.swaylock-effects}/bin/swaylock --screenshots --clock --indicator --indicator-radius 100 --indicator-thickness 7 --effect-blur 7x5 --effect-vignette 0.5:0.5 --ring-color bb00cc  --key-hl-color 880033 --line-color 00000000 --inside-color 00000088 --separator-color 00000000 --font 'JetBrains Nerdfont Mono' --grace 2 --fade-in 0.4 --daemonize";
 
         "${modifier}+Shift+n" = "exec variety -n";
         "${modifier}+Shift+p" = "exec variety -p";
         "${modifier}+Shift+f" = "exec variety -f";
+
+        #bindsym $mod+Shift+i exec swaync-client -t -sw
+        "${modifier}+Shift+i" = "exec swaync-client -t -sw";
 
         "XF86AudioRaiseVolume" = "exec 'pactl set-sink-volume @DEFAULT_SINK@ +1%'";
         "XF86AudioLowerVolume" = "exec 'pactl set-sink-volume @DEFAULT_SINK@ -1%'";
@@ -260,7 +261,7 @@ in
       };
       startup = [
         # Notification daemon
-        { command = "mako"; }
+        #{ command = "swaync"; }
         # Polkit
         { command = "/run/current-system/sw/libexec/polkit-gnome-authentication-agent-1"; }
         # wm name
@@ -297,8 +298,12 @@ in
           transform = "90";
         };
       };
-      #focus = "DP-1";
     };
+    extraConfig = ''
+        # Inhibit idle whenever any view is fullscreen
+        for_window [class=".*"] inhibit_idle fullscreen
+        for_window [app_id=".*"] inhibit_idle fullscreen
+      '';
   };
   home.packages = with pkgs; [
     tesseract4
@@ -311,10 +316,10 @@ in
     swaylock-effects
     notify-desktop
     mako
+    swaynotificationcenter
     libappindicator
     swaybg
     waytrogen
-    feh
     wayneko
     glpaper
   ];

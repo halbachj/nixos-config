@@ -17,9 +17,10 @@
       bat
       wget
       git
-      htop
+      btop
       groff
       cp210x-program
+      nix-search-cli
     ];
     variables = {
       VISUAL = "nvim";
@@ -35,5 +36,7 @@
   programs.nix-ld.enable = true;
   nixpkgs.config.allowUnfree = true; # TODO: Replace with unfree predicate instead of allowing all
 
-  services = { };
+  services = {
+    locate.enable = true; # for nix-locate and pay-respects
+  };
 }

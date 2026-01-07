@@ -104,6 +104,10 @@
                       mountOptions = [
                         "compress=zstd"
                         "noatime"
+                        "nofail"
+                        "x-systemd.automount"
+                        "x-systemd.device-timeout=5s"
+                        "x-systemd.idle-timeout=60s"
                       ];
                       mountpoint = "/home";
                     };
@@ -117,6 +121,7 @@
     };
   };
   #fileSystems."/cryptarch".neededForBoot = false;
+  fileSystems."/home".neededForBoot = false;
   # Trim because disk is ssd
   services.fstrim.enable = true;
 }

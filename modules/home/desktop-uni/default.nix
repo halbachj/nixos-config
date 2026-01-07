@@ -6,6 +6,7 @@
     #./matlab.nix
     ./office.nix
     ./jetbrains.nix
-    ./octave.nix
+    ./math.nix
+    ./compsci.nix
   ];
 }

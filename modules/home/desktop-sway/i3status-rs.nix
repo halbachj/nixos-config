@@ -32,6 +32,7 @@
               warning = 20.0;
               alert = 10.0;
               format = " $icon root: $available.eng(w:2) ";
+              format_alt = " $icon $available / $total ";
             }
             {
               block = "memory";

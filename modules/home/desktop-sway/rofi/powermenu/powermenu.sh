@@ -19,20 +19,20 @@ uptime="`uptime -p | sed -e 's/up //g'`"
 host=`hostname`
 
 # Options
-hibernate=''
-shutdown=''
-reboot=''
-lock=''
-suspend=''
-logout=''
-yes=''
-no=''
+hibernate='H'   # nf-mdi-weather_night_off or nf-mdi-power_sleep_variant
+shutdown=''    # nf-fa-power_off (clean, universal)
+reboot=''      # nf-fa-refresh or nf-fa-rotate_right
+lock=''        # nf-fa-lock
+suspend='S'    # nf-mdi-power_sleep (classic sleep symbol)
+logout='L'      # nf-mdi-logout_variant or nf-mdi-logout
+yes=''         # nf-fa-check_circle / check
+no=''          # nf-fa-times_circle / close
 
 # Rofi CMD
 rofi_cmd() {
 	rofi -dmenu \
-		-p " $USER@$host" \
-		-mesg " Uptime: $uptime" \
+		-p "$USER@$host" \
+		-mesg "Uptime: $uptime" \
 		-theme ${dir}/${theme}.rasi
 }
 

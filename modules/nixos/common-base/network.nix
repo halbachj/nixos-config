@@ -12,7 +12,8 @@
   networking = {
     # Disable legacy DHCP client; NetworkManager handles DHCP itself.
     dhcpcd.enable = false;
-    useDHCP = false;
+    useDHCP = lib.mkForce false;
+    interfaces = lib.mkForce { };
 
     # Stay on NetworkManager (not systemd-networkd).
     useNetworkd = false;
@@ -78,5 +79,17 @@
 
     ## Tailscale ##############################################
     tailscale.enable = true;
+
+  };
+
+  ############################
+  ##        Systemd         ##
+  ############################
+  systemd = {
+
+    ## Network ################################################
+    network = { # Disable other systemd networking options we are usin NetworkManager
+      enable = lib.mkForce false; # Explicitly disable systemd networking
+    };
   };
 }

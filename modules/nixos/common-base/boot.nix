@@ -8,7 +8,7 @@
 
 { pkgs, lib, ... }:
 let
-  lim = 15;
+  lim = 5;
   systems = {
     ext4 = true;
     fat32 = true;

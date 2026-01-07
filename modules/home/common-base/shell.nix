@@ -31,6 +31,12 @@
       ];
     };
 
+    direnv = {
+      enable = true;
+      enableBashIntegration = true; # see note on other shells below
+      nix-direnv.enable = true;
+    };
+
     zsh = {
       enable = true;
       enableCompletion = true;
@@ -41,6 +47,7 @@
         calc = "octave";
         nos = "nh os switch";
         nob = "nh os build";
+        cpath = "pwd | wl-copy";
       };
       initContent = lib.mkOrder 1500 ''
         eval "$(zoxide init zsh)"
@@ -52,6 +59,17 @@
           source "$(fzf-share)/key-bindings.zsh"
           source "$(fzf-share)/completion.zsh"
         fi
+
+        # Remote path completion for scp/sftp/rsync
+        zstyle ":completion:*:(scp|sftp|rsync):*" remote-access yes
+
+        # Optional: cache completions (faster subsequent tabs)
+        if [[ -z $ZSH_CACHE_DIR- ]]; then
+          ZSH_CACHE_DIR=$XDG_CACHE_HOME:-$HOME/.cache/zsh
+        fi
+        mkdir -p "$ZSH_CACHE_DIR"
+        zstyle ":completion:*" use-cache on
+        zstyle ":completion:*" cache-path "$ZSH_CACHE_DIR"
       '';
       sessionVariables = {
         POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD = true;

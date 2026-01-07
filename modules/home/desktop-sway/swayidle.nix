@@ -20,16 +20,16 @@
           command = "${pkgs.libnotify}/bin/notify-send 'Locking in 20 seconds' -t 20000";
         }
         {
-          timeout = 300;
+          timeout = 200;
           command = lock;
         }
         {
-          timeout = 600;
+          timeout = 300;
           command = display "off";
           resumeCommand = display "on";
         }
         {
-          timeout = 900;
+          timeout = 600;
           command = "${pkgs.systemd}/bin/systemctl suspend";
         }
       ];

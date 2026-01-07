@@ -11,5 +11,6 @@
     ./wallpaper.nix
     ./games.nix
     ./ai.nix
+    ./kdeconnect.nix
   ];
 }

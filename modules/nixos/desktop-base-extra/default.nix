@@ -14,5 +14,7 @@
     ./matlab.nix
     ./misc.nix
     ./openvpn.nix
+    ./kdeconnect-firewall.nix
+    ./android.nix
   ];
 }

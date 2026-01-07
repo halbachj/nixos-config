@@ -23,7 +23,7 @@
       "org.musicbrainz.Picard"
       # Media Players
       "org.gnome.Loupe"
-      "org.videolan.VLC"
+      #"org.videolan.VLC"
       # Messaging
       "com.discordapp.Discord"
       "im.riot.Riot"

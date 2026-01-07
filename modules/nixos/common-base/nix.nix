@@ -23,15 +23,15 @@
     # Automatically collect garbage delete old generations/profiles
     # As bootloaders are set to keep 10 entries, garbage collection does not remove those last 10 entries.
     # So can still rollback safely
-    #gc = {
-    #  automatic = true;
-    #  dates = "weekly";
-    #  # Keep only the last 10 generations
-    #  # see https://nix.dev/manual/nix/2.25/command-ref/nix-collect-garbage
-    #  # and https://nix.dev/manual/nix/2.25/command-ref/nix-env/delete-generations#generations-count
-    #  # See https://github.com/NixOS/nix/pull/10426 for why I cant set a number of generations to keep
-    #  options = "--delete-older-than 5d";
-    #};
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      # Keep only the last 10 generations
+      # see https://nix.dev/manual/nix/2.25/command-ref/nix-collect-garbage
+      # and https://nix.dev/manual/nix/2.25/command-ref/nix-env/delete-generations#generations-count
+      # See https://github.com/NixOS/nix/pull/10426 for why I cant set a number of generations to keep
+      options = "--delete-older-than 5d";
+    };
     # Optimise the store every day
     optimise = {
       automatic = true;

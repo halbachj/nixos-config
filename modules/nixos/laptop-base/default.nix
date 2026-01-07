@@ -13,6 +13,6 @@
     ./backlight.nix
     ./bluetooth.nix
     ./webcam.nix
-    ./fingerprint.nix
+    #./fingerprint.nix
   ];
 }
