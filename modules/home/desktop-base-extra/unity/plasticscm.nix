@@ -1,8 +1,6 @@
 { inputs, pkgs, ... }:
 {
-
   home.packages = with pkgs; [
-    ghidra-bin
+    plasticscm-client-gui
   ];
-
 }

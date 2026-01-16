@@ -20,5 +20,6 @@
     poppler-utils #PDF utils
     viewnior
     vlc
+    contact
   ];
 }

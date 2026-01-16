@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   home.packages = [
-    pkgs.rofi-wayland
+    pkgs.rofi
   ];
   xdg.configFile."rofi/config.rasi".source = ./launcher/config.rasi;
   xdg.configFile."rofi/style.rasi".source = ./launcher/style-2.rasi;

@@ -81,8 +81,8 @@
     switch = {
       enable = true;
     };
-    rebuild = {
-      enableNg = true;
-    };
+    #rebuild = {
+    #  enableNg = true;
+    #};
   };
 }

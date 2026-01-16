@@ -142,7 +142,7 @@ in
         "${modifier}+m+d" = "input * xkb_layout \"de\"";
         "${modifier}+m+u" = "input * xkb_layout \"us\"";
         "${modifier}+m+i" = "input * xkb_layout \"ie\"";
-        "${modifier}+Shift+z" = "${pkgs.swaylock-effects}/bin/swaylock --screenshots --clock --indicator --indicator-radius 100 --indicator-thickness 7 --effect-blur 7x5 --effect-vignette 0.5:0.5 --ring-color bb00cc  --key-hl-color 880033 --line-color 00000000 --inside-color 00000088 --separator-color 00000000 --font 'JetBrains Nerdfont Mono' --grace 2 --fade-in 0.4 --daemonize";
+        "${modifier}+Shift+y" = "exec ${pkgs.swaylock-effects}/bin/swaylock --screenshots --clock --indicator --indicator-radius 100 --indicator-thickness 7 --effect-blur 7x5 --effect-vignette 0.5:0.5 --ring-color bb00cc  --key-hl-color 880033 --line-color 00000000 --inside-color 00000088 --separator-color 00000000 --font 'JetBrains Nerdfont Mono' --grace 2 --fade-in 0.4 --daemonize";
 
         "${modifier}+Shift+n" = "exec variety -n";
         "${modifier}+Shift+p" = "exec variety -p";
@@ -320,7 +320,7 @@ in
     libappindicator
     swaybg
     waytrogen
-    wayneko
-    glpaper
+    #wayneko
+    #glpaper
   ];
 }
