@@ -1,0 +1,14 @@
+{
+  inputs,
+  pkgs,
+  system,
+  ...
+}:
+{
+
+  home.packages = with pkgs; [
+    octaveFull
+    drawio
+  ];
+
+}

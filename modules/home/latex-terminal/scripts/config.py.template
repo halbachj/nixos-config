@@ -1,0 +1,17 @@
+#!/usr/bin/env python3
+"""
+Configuration settings for LaTeX Terminal Renderer.
+Adjust these values to customize the appearance of rendered equations.
+"""
+
+INLINE_MATH_PADDING = 0.1
+INLINE_MATH_MARGIN_TOP = 0
+INLINE_MATH_MARGIN_BOTTOM = 0
+INLINE_MATH_SCALE_FACTOR = __SCALE_FACTOR__
+INLINE_MATH_DPI = __DPI__
+
+BLOCK_MATH_PADDING = 0.1
+BLOCK_MATH_FONT_SIZE = __BLOCK_FONT_SIZE__
+BLOCK_MATH_MARGIN_TOP = 0
+BLOCK_MATH_MARGIN_BOTTOM = 0
+BLOCK_MATH_DPI = __DPI__

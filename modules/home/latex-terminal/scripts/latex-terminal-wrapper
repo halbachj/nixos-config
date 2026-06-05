@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# LaTeX Terminal wrapper with custom configuration
+
+set -euo pipefail
+
+CONFIG_DIR="$HOME/.config/latex-terminal"
+CONFIG_FILE="$CONFIG_DIR/config.py"
+
+# Create config directory
+mkdir -p "$CONFIG_DIR"
+
+# Generate config file with custom settings
+sed -e "s/__SCALE_FACTOR__/${LATEX_SCALE_FACTOR:-1.05}/g" \
+    -e "s/__BLOCK_FONT_SIZE__/${LATEX_BLOCK_FONT_SIZE:-22}/g" \
+    -e "s/__DPI__/${LATEX_DPI:-200}/g" \
+    "@pkgdir@/scripts/config.py.template" > "$CONFIG_FILE"
+
+# Run latex-terminal with config in PYTHONPATH
+PYTHONPATH="$CONFIG_DIR:$PYTHONPATH" exec @pkgdir@/latex_terminal.py "$@"
