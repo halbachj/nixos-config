@@ -1,0 +1,10 @@
+# direnv
+.direnv/
+
+# nix
+result
+result-*
+
+# age keys (never commit these)
+*.key
+keys.txt
