@@ -1,0 +1,28 @@
+keys:
+  - &admin age1evak5wmhvvcxm7r6l7jcshdkfucp5xzgmkfn87x4cecnwcy94q6q5a5k2e
+
+creation_rules:
+  - path_regex: secrets/[^/]+\.yaml$
+    key_groups:
+      - age:
+          - *admin
+  - path_regex: hosts/[^/]+/secrets\.yaml$
+    key_groups:
+      - age:
+          - *admin
+  - path_regex: modules/nixos/[^/]+/secrets\.yaml$
+    key_groups:
+      - age:
+          - *admin
+  - path_regex: modules/home/[^/]+/secrets\.yaml$
+    key_groups:
+      - age:
+          - *admin
+  - path_regex: modules/home/[^/]+/[^/]+/secrets\.yaml$
+    key_groups:
+      - age:
+          - *admin
+  - path_regex: hosts/[^/]+/users/[^/]+/secrets\.yaml$
+    key_groups:
+      - age:
+          - *admin
